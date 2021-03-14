@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 
@@ -9,16 +9,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Border Utilities</title>
+    <title>Sistema de gerenciamento veicular</title>
 
-    <!-- Custom fonts for this template-->
+    <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -33,9 +36,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-car-side"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Sistema de gerenciamento veicular</div>
             </a>
 
             <!-- Divider -->
@@ -53,7 +56,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Ferramentas
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -61,32 +64,17 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>Manutenção</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item active" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <h6 class="collapse-header">Oficina:</h6>
+                        <a class="collapse-item" href="login.html">Oficina Mecânica</a>
+                        <a class="collapse-item" href="login.html">Oficina Eletrica</a>
+                        <a class="collapse-item" href="login.html">Oficina Funilaria</a>
+                        <h6 class="collapse-header">Serviço:</h6>
+                        <a class="collapse-item" href="404.html">Pneu</a>
+                        <a class="collapse-item" href="blank.html">Abastecimento</a>
                     </div>
                 </div>
             </li>
@@ -94,44 +82,54 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Registro
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="distance.html">
+                    <i class="fas fa-fw fa-car-side"></i>
+                    <span>Distância</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Cadastros
+            </div>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>Empresas</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <h6 class="collapse-header">Oficina:</h6>
+                        <a class="collapse-item" href="login.html">Oficina Mecânica</a>
+                        <a class="collapse-item" href="login.html">Oficina Eletrica</a>
+                        <a class="collapse-item" href="login.html">Oficina Funilaria</a>
+                        <h6 class="collapse-header">Serviço:</h6>
+                        <a class="collapse-item" href="404.html">Pneus</a>
+                        <a class="collapse-item" href="blank.html">Abastecimento</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                <a class="nav-link" href="employee.html">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Funcionário</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                <a class="nav-link" href="car.html">
+                    <i class="fas fa-fw fa-car"></i>
+                    <span>Veículos</span></a>
             </li>
 
             <!-- Divider -->
@@ -155,9 +153,11 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </form>
 
                     <!-- Topbar Search -->
                     <form
@@ -359,109 +359,216 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">Border Utilities</h1>
-                    <p class="mb-4">Bootstrap's default utility classes can be found on the official <a
-                            href="https://getbootstrap.com/docs">Bootstrap Documentation</a> page. The custom utilities
-                        below were created to extend this theme past the default utility classes built into Bootstrap's
-                        framework.</p>
-
-                    <!-- Content Row -->
+                    <h1 class="h3 mb-2 text-gray-800">Funcionário</h1>
+                    
                     <div class="row">
-
-                        <!-- Border Left Utilities -->
                         <div class="col-lg-6">
-
-                            <div class="card mb-4 py-3 border-left-primary">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Dados Pessoais</h6>
+                                </div>
                                 <div class="card-body">
-                                    .border-left-primary
+                                    <div class="form-group">
+                                        <label>Nome</label>
+                                        <input type="text" class="form-control" id="" placeholder="Ex. Bruno">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Sobrenome</label>
+                                        <input type="text" class="form-control" id="" placeholder="Ex. da Silva">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>CPF</label>
+                                        <input type="number" class="form-control" id="" placeholder="Ex. 54323476521">
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label>RG</label>
+                                        <input type="text" class="form-control" id="" placeholder="Ex. 42845776X">
+                                    </div> 
+
+                                    <hr class="sidebar-divider d-none d-md-block">
+
+                                    <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">CNH</h5>
+                                                <div class="form-group">
+                                                    <label>Número</label>
+                                                    <input type="number" class="form-control" id="" placeholder="Ex. 876432543256">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Validadede</label>
+                                                    <input class="form-control" type="date" value="2011-08-19" id="date-local-input">
+                                                </div>
+                                            </div>
+                                    </div>
+
+                                    <hr class="sidebar-divider d-none d-md-block">
+
+                                    <div class="form-group">
+                                        <label>Carga Horaria de Trabalho</label>
+                                        <input type="number" class="form-control" id="" placeholder="Ex. 160">
+                                    </div> 
+                                    
+                                    <div class="form-group">
+                                        <label>Data de Entrada na Empresa</label>
+                                        <input class="form-control" type="date" value="2011-08-19" id="date-local-input">
+                                    </div>
+                                
                                 </div>
                             </div>
-
-                            <div class="card mb-4 py-3 border-left-secondary">
-                                <div class="card-body">
-                                    .border-left-secondary
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-success">
-                                <div class="card-body">
-                                    .border-left-success
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-info">
-                                <div class="card-body">
-                                    .border-left-info
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-warning">
-                                <div class="card-body">
-                                    .border-left-warning
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-danger">
-                                <div class="card-body">
-                                    .border-left-danger
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-dark">
-                                <div class="card-body">
-                                    .border-left-dark
-                                </div>
-                            </div>
-
                         </div>
-
-                        <!-- Border Bottom Utilities -->
                         <div class="col-lg-6">
-
-                            <div class="card mb-4 py-3 border-bottom-primary">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Outros</h6>
+                                </div>
                                 <div class="card-body">
-                                    .border-bottom-primary
+
+                                    <div class="form-group">
+                                        <label>Escolariedade</label>
+                                        <select class="custom-select" id="">
+                                            <option></option>
+                                            <option value="1">Fundamental</option>
+                                            <option value="2">Ensino Media</option>
+                                            <option value="3">Ensino Superior</option>
+                                            <option value="4">Superior incompleto</option>
+                                            <option value="5">Pos-Graduação</option>
+                                            <option value="5">Mestrado</option>
+                                            <option value="5">Doutorado</option>
+                                            <option value="5">Outros</option>
+                                        </select>
+                                    </div>
+
+                                    <hr class="sidebar-divider d-none d-md-block">
+                                   
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Endereço</h5>
+                                            <div class="form-group">
+                                                <label>Lougradouro</label>
+                                                <input type="text" class="form-control" id="" placeholder="Ex. Rua">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Número</label>
+                                                <input class="form-control" type="number" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>CEP</label>
+                                                <input class="form-control" type="number" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Bairro</label>
+                                                <input class="form-control" type="text" id="" placeholder="Ex. Jardim Das Flores">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="sidebar-divider d-none d-md-block">
+
+                                    <div class="form-group">
+                                        <label>Observação</label>
+                                        <textarea class="form-control" aria-label="With textarea" rows="8"></textarea>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="card mb-4 py-3 border-bottom-secondary">
-                                <div class="card-body">
-                                    .border-bottom-secondary
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-success">
-                                <div class="card-body">
-                                    .border-bottom-success
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-info">
-                                <div class="card-body">
-                                    .border-bottom-info
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-warning">
-                                <div class="card-body">
-                                    .border-bottom-warning
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-danger">
-                                <div class="card-body">
-                                    .border-bottom-danger
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-dark">
-                                <div class="card-body">
-                                    .border-bottom-dark
-                                </div>
-                            </div>
-
                         </div>
+                    </div>
 
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <button type="button" class="btn btn-success">Enviar</button>
+                    </div>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tabela de Funcionário</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Sobrenome</th>
+                                            <th>CPF</th>
+                                            <th>RG</th>
+                                            <th>CNH Número</th>
+                                            <th>Carga Hora de Trabalho</th>
+                                            <th>Escolariedade</th>
+                                            <th>Endereço</th>
+                                            <th>Observação</th>
+                                            <th>Editar/Excluir</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Pedro da Silva</th>
+                                            <th>Vendedor</th>
+                                            <th>Fechar contrato</th>
+                                            <th>123</th>
+                                            <th>12</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                            <td>2011/07/25</td>
+                                            <td>$170,750</td>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Herrod Chandler</td>
+                                            <td>Sales Assistant</td>
+                                            <td>San Francisco</td>
+                                            <td>59</td>
+                                            <td>2012/08/06</td>
+                                            <td>$137,500</td>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Herrod Chandler</td>
+                                            <td>Sales Assistant</td>
+                                            <td>San Francisco</td>
+                                            <td>59</td>
+                                            <td>2012/08/06</td>
+                                            <td>$137,500</td>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -474,7 +581,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Bruno Porceli Alaniz &copy; Your Website 2021</span>
                     </div>
                 </div>
             </footer>
@@ -520,6 +627,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
