@@ -69,7 +69,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Oficina:</h6>
-                        <a class="collapse-item" href="mechanicalRegistration.html">Oficina Mecânica</a>
+                        <a class="collapse-item" href="login.html">Oficina Mecânica</a>
                         <a class="collapse-item" href="login.html">Oficina Eletrica</a>
                         <a class="collapse-item" href="login.html">Oficina Funilaria</a>
                         <h6 class="collapse-header">Serviço:</h6>
@@ -359,117 +359,83 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Funcionário</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Distância</h1>
                     
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Dados Pessoais</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Dados Condutor</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control" id="" placeholder="Ex. Bruno">
+                                        <select class="custom-select" id="">
+                                            <option placeholder="639877"></option>
+                                            <option value="1">Carlos da Silva</option>
+                                            <option value="2">Pedro Oliveira</option>
+                                            <option value="3">Maria da Cunha</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Sobrenome</label>
-                                        <input type="text" class="form-control" id="" placeholder="Ex. da Silva">
+                                        <label>Cargo</label>
+                                        <select class="custom-select" id="">
+                                            <option placeholder="639877"></option>
+                                            <option value="1">Diretor</option>
+                                            <option value="2">Vendedor</option>
+                                            <option value="3">Motorista</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>CPF</label>
-                                        <input type="number" class="form-control" id="" placeholder="Ex. 54323476521">
-                                    </div> 
-
-                                    <div class="form-group">
-                                        <label>RG</label>
-                                        <input type="text" class="form-control" id="" placeholder="Ex. 42845776X">
-                                    </div> 
-
-                                    <hr class="sidebar-divider d-none d-md-block">
-
-                                    <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">CNH</h5>
-                                                <div class="form-group">
-                                                    <label>Número</label>
-                                                    <input type="number" class="form-control" id="" placeholder="Ex. 876432543256">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Validadede</label>
-                                                    <input class="form-control" type="date" value="2011-08-19" id="date-local-input">
-                                                </div>
-                                            </div>
+                                        <label>Objetivo</label>
+                                        <select class="custom-select" id="inputGroupSelect01">
+                                            <option placeholder="639877"></option>
+                                            <option value="1">Vender Produtos</option>
+                                            <option value="2">Levar para manutenção</option>
+                                            <option value="3">Outros</option>
+                                        </select>
                                     </div>
-
-                                    <hr class="sidebar-divider d-none d-md-block">
-
-                                    <div class="form-group">
-                                        <label>Carga Horaria de Trabalho</label>
-                                        <input type="number" class="form-control" id="" placeholder="Ex. 160">
-                                    </div> 
                                     
                                     <div class="form-group">
-                                        <label>Data de Entrada na Empresa</label>
-                                        <input class="form-control" type="date" value="2011-08-19" id="date-local-input">
+                                        <label>Observação</label>
+                                        <textarea class="form-control" aria-label="With textarea" rows="5"></textarea>
                                     </div>
-                                
+                                    
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Outros</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Dados Veículo</h6>
                                 </div>
                                 <div class="card-body">
-
+                                    
                                     <div class="form-group">
-                                        <label>Escolariedade</label>
-                                        <select class="custom-select" id="">
-                                            <option></option>
-                                            <option value="1">Fundamental</option>
-                                            <option value="2">Ensino Media</option>
-                                            <option value="3">Ensino Superior</option>
-                                            <option value="4">Superior incompleto</option>
-                                            <option value="5">Pos-Graduação</option>
-                                            <option value="5">Mestrado</option>
-                                            <option value="5">Doutorado</option>
-                                            <option value="5">Outros</option>
-                                        </select>
+                                        <label>Placa</label>
+                                        <input type="text" class="form-control" placeholder="6H65TY1" aria-label="placa" aria-describedby="basic-addon1">
+                                    </div>
+                                    
+                                    <div class="form-group"> 
+                                        <label>Km Inicial</label>
+                                        <input type="number" class="form-control" placeholder="639877" aria-label="Username" aria-describedby="basic-addon1">
                                     </div>
 
-                                    <hr class="sidebar-divider d-none d-md-block">
-                                   
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Endereço</h5>
-                                            <div class="form-group">
-                                                <label>Lougradouro</label>
-                                                <input type="text" class="form-control" id="" placeholder="Ex. Rua">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Número</label>
-                                                <input class="form-control" type="number" id="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>CEP</label>
-                                                <input class="form-control" type="number" id="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bairro</label>
-                                                <input class="form-control" type="text" id="" placeholder="Ex. Jardim Das Flores">
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <label>Km Final</label>
+                                        <input type="number" class="form-control" placeholder="639888" aria-label="Km Final" aria-describedby="basic-addon1">
                                     </div>
 
-                                    <hr class="sidebar-divider d-none d-md-block">
+                                    <div class="form-group"> 
+                                        <label>Data e Hora Inicial</label>                  
+                                        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                    </div>
 
                                     <div class="form-group">
-                                        <label>Observação</label>
-                                        <textarea class="form-control" aria-label="With textarea" rows="8"></textarea>
+                                        <label>Data e Hora Final</label>
+                                        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
                                     </div>
                                 </div>
                             </div>
@@ -483,7 +449,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Tabela de Funcionário</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Tabela de Distância</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -491,15 +457,12 @@
                                     <thead>
                                         <tr>
                                             <th>Nome</th>
-                                            <th>Sobrenome</th>
-                                            <th>CPF</th>
-                                            <th>RG</th>
-                                            <th>CNH Número</th>
-                                            <th>Carga Hora de Trabalho</th>
-                                            <th>Escolariedade</th>
-                                            <th>Endereço</th>
-                                            <th>Observação</th>
-                                            <th>Editar/Excluir</th>
+                                            <th>Cargo</th>
+                                            <th>Objetivo</th>
+                                            <th>Km Percorrido</th>
+                                            <th>Hora Veículo</th>
+                                            <th>Objetivo</th>
+                                            <th>Editar / Remover</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -509,9 +472,6 @@
                                             <th>Fechar contrato</th>
                                             <th>123</th>
                                             <th>12</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
                                             <th></th>
                                             <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></th>
                                         </tr>
@@ -524,9 +484,6 @@
                                             <td>61</td>
                                             <td>2011/04/25</td>
                                             <td>$320,800</td>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
                                             <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
                                         </tr>
                                         <tr>
@@ -536,9 +493,6 @@
                                             <td>63</td>
                                             <td>2011/07/25</td>
                                             <td>$170,750</td>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
                                             <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
                                         </tr>
                                         <tr>
@@ -548,9 +502,6 @@
                                             <td>59</td>
                                             <td>2012/08/06</td>
                                             <td>$137,500</td>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
                                             <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
                                         </tr>
                                         <tr>
@@ -560,9 +511,6 @@
                                             <td>59</td>
                                             <td>2012/08/06</td>
                                             <td>$137,500</td>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
                                             <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
                                         </tr>
                                     </tbody>
