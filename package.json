@@ -14,7 +14,17 @@
         "theme",
         "template",
         "admin",
-        "app"
+        "app",
+    	"table",
+    	"edit",
+    	"bootstrap",
+    	"spreadsheet",
+    	"inline",
+    	"editor"
+    ],
+    "ignore": [
+    	"*.md",
+    	"*.php"
     ],
     "homepage": "https://startbootstrap.com/theme/sb-admin-2",
     "bugs": {
@@ -36,7 +46,8 @@
         "chart.js": "2.9.4",
         "datatables.net-bs4": "1.10.22",
         "jquery": "3.5.1",
-        "jquery.easing": "^1.4.1"
+        "jquery.easing": "^1.4.1",
+        "jquery": "jquery/jquery"
     },
     "devDependencies": {
         "browser-sync": "2.26.13",
@@ -51,4 +62,28 @@
         "gulp-uglify": "3.0.2",
         "merge-stream": "2.0.0"
     }
+}
+{
+  "name": "markcell/jquery-tabledit",
+  "version": "1.2.3",
+  "description": "Inline editor for HTML tables compatible with Bootstrap.",
+  "main": "jquery.tabledit.js",
+  "license": "MIT",
+  "homepage": "http://markcell.github.io/jquery-tabledit",
+  "keywords": [
+    "html",
+    "table",
+    "edit",
+    "bootstrap",
+    "spreadsheet",
+    "inline",
+    "editor"
+  ],
+  "ignore": [
+    "*.md",
+    "*.php"
+  ],
+  "dependencies": {
+    "jquery": "jquery/jquery"
+  }
 }
