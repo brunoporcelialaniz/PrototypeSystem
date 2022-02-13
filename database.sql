@@ -153,4 +153,19 @@ CREATE TABLE IF NOT EXISTS public.vehicle
 
 TABLESPACE pg_default;
 
+INSERT INTO public.company(
+	pk_company, company_name, company_cnpj, company_mechanil, company_electrical, company_painting, company_tapestry, company_tire, company_vehicle, company_gas_station, company_observation)
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id;
 
+INSERT INTO public.address_on(
+	pk_address, address_public_place, address_number, address_district, address_cep, fk_address_company, fk_address_employee, fk_address_vehicle)
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+####################
+
+WITH company_key AS
+        (INSERT INTO company (company_name, company_cnpj, company_mechanil, company_electrical, company_painting, company_tapestry, company_tire, company_vehicle, company_gas_station, company_observation) 
+            VALUES ('Auto Elétrica do Pedrão', 67453453000154, 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'Não sei') RETURNING pk_company)
+INSERT INTO address_on (address_public_place, address_number, address_district, address_cep, fk_address_company)
+   SELECT 'Rua Oito', 856, 'Vila Paris', 19912789, company_key.pk_company
+   FROM company_key;
