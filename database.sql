@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS public.vehicle
     CONSTRAINT vehicle_pk_vehicle_key UNIQUE (pk_vehicle)
 )
 
-TABLESPACE pg_default;
+####################
 
 INSERT INTO public.company(
 	pk_company, company_name, company_cnpj, company_mechanil, company_electrical, company_painting, company_tapestry, company_tire, company_vehicle, company_gas_station, company_observation)
@@ -161,11 +161,35 @@ INSERT INTO public.address_on(
 	pk_address, address_public_place, address_number, address_district, address_cep, fk_address_company, fk_address_employee, fk_address_vehicle)
 	VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
+WITH company_key AS
+(INSERT INTO company (company_name, company_cnpj, company_mechanil, company_electrical, company_painting, company_tapestry, company_tire, company_vehicle, company_gas_station, company_observation) 
+VALUES ('Auto Elétrica do Pedrão', 67453453000154, 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'Não sei') RETURNING pk_company)
+INSERT INTO address_on (address_public_place, address_number, address_district, address_cep, fk_address_company)
+SELECT 'Rua Oito', 209, 'Jardim Manaus', 19912789, company_key.pk_company
+FROM company_key;
+
+SELECT * FROM public.address_on AS A 
+INNER JOIN public.company AS C ON A.fk_address_company = C.pk_company;
+
 ####################
 
-WITH company_key AS
-        (INSERT INTO company (company_name, company_cnpj, company_mechanil, company_electrical, company_painting, company_tapestry, company_tire, company_vehicle, company_gas_station, company_observation) 
-            VALUES ('Auto Elétrica do Pedrão', 67453453000154, 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'Não sei') RETURNING pk_company)
-INSERT INTO address_on (address_public_place, address_number, address_district, address_cep, fk_address_company)
-   SELECT 'Rua Oito', 856, 'Vila Paris', 19912789, company_key.pk_company
-   FROM company_key;
+INSERT INTO public.employee(
+	pk_employee, employee_fist_name, employee_last_name, employee_education, employee_cpf, employee_rg, employee_working_hours, employee_admission_date, employee_cnh_number, employee_cnh_date, employee_observation)
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+INSERT INTO public.address_on(
+	pk_address, address_public_place, address_number, address_district, address_cep, fk_address_company, fk_address_employee, fk_address_vehicle)
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+WITH employee_key AS
+(INSERT INTO employee (employee_fist_name, employee_last_name, employee_education, employee_cpf, employee_rg, employee_working_hours, employee_admission_date, employee_cnh_number, employee_cnh_date, employee_observation) 
+VALUES ('Pedro', 'da Silva', 'Mestrado', 87634523432, 238769879, '160 hours', '2020-11-27', 128765679845, '2004-03-08', '') RETURNING pk_employee)
+INSERT INTO address_on (address_public_place, address_number, address_district, address_cep, fk_address_employee)
+SELECT 'Rua Jabuti', 787, 'Vila Dumond', 19913337, employee_key.pk_employee
+FROM employee_key;
+
+SELECT * FROM public.address_on AS A 
+INNER JOIN public.employee AS E ON A.fk_address_employee = E.pk_employee;
+
+#####################
+
