@@ -193,3 +193,22 @@ INNER JOIN public.employee AS E ON A.fk_address_employee = E.pk_employee;
 
 #####################
 
+INSERT INTO public.vehicle(
+	pk_vehicle, vehicle_model, vehicle_brand, vehicle_color, vehicle_kilometer, vehicle_fuel, vehicle_manufacturing, vehicle_board, vehicle_doors, vehicle_streaming, vehicle_tire_rim, vehicle_tire_brand, vehicle_lamps, vehicle_observation)
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+INSERT INTO public.address_on(
+	pk_address, address_public_place, address_number, address_district, address_cep, fk_address_company, fk_address_employee, fk_address_vehicle)
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+WITH vehicle_key AS
+(INSERT INTO vehicle (vehicle_model, vehicle_brand, vehicle_color, vehicle_kilometer, vehicle_fuel, vehicle_doors, vehicle_streaming, vehicle_tire_rim, vehicle_tire_brand, vehicle_lamps, vehicle_observation, vehicle_model_year, vehicle_year_manufacture, vehicle_license_plate) 
+VALUES ('Arco', 'Fiat', 'Branco', 66745, 'Gasolina/Etanol', 4, 'Semiautomático', 'Aro 17', 'Pirelli', 'HB3', '', 2012, 2011, 'U76TF3') RETURNING pk_vehicle)
+INSERT INTO address_on (address_public_place, address_number, address_district, address_cep, fk_address_vehicle)
+SELECT 'Rua Sete', 87, 'Vila Olimpia', 19923237, vehicle_key.pk_vehicle
+FROM vehicle_key;
+
+SELECT * FROM public.address_on AS A 
+INNER JOIN public.vehicle AS V ON A.fk_address_vehicle = V.pk_vehicle;
+
+#####################
