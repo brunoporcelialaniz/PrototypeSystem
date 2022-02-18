@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $(".submit").click(function(){
         $.ajax({
-            url: '/form_company.php',
+            url: 'https://localhost/PrototypeSystem/form_company.php',
             type: 'POST',
             data: {
                 name: $('input[name=name]').val(),
