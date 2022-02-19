@@ -1,12 +1,12 @@
 $(document).ready(function(){
     $(".submit").click(function(){
         $.ajax({
-            url: 'https://localhost/PrototypeSystem/form_company.php',
+            url: 'http://127.0.0.1/PrototypeSystem/form_company.php',
             type: 'POST',
             data: {
                 name: $('input[name=name]').val(),
                 cnpj: $('input[name=cnpj]').val(),
-                activity: $('select[name=activity]').val(),
+                activity: $('select[name=activity] option:selected').val(),
                 observation: $('input[name=observation]').val(),
                 public_place: $('input[name=public_place]').val(),
                 number: $('input[name=number]').val(),
