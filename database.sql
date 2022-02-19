@@ -33,14 +33,8 @@ CREATE TABLE IF NOT EXISTS public.company
     pk_company integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     company_name character varying(250) COLLATE pg_catalog."default",
     company_cnpj bigint,
-    company_mechanil boolean,
-    company_electrical boolean,
-    company_painting boolean,
-    company_tapestry boolean,
-    company_tire boolean,
-    company_vehicle boolean,
-    company_gas_station boolean,
     company_observation text COLLATE pg_catalog."default",
+    company_activity character varying(250) COLLATE pg_catalog."default",
     CONSTRAINT company_pkey PRIMARY KEY (pk_company),
     CONSTRAINT company_pk_company_key UNIQUE (pk_company)
 )
@@ -155,7 +149,7 @@ CREATE TABLE IF NOT EXISTS public.vehicle
 ####################
 
 INSERT INTO public.company(
-	pk_company, company_name, company_cnpj, company_mechanil, company_electrical, company_painting, company_tapestry, company_tire, company_vehicle, company_gas_station, company_observation)
+	pk_company, company_name, company_cnpj, company_activity, company_observation)
 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id;
 
 INSERT INTO public.address_on(
@@ -163,8 +157,8 @@ INSERT INTO public.address_on(
 	VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 WITH company_key AS
-(INSERT INTO company (company_name, company_cnpj, company_mechanil, company_electrical, company_painting, company_tapestry, company_tire, company_vehicle, company_gas_station, company_observation) 
-VALUES ('Auto Elétrica do Pedrão', 67453453000154, 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'Não sei') RETURNING pk_company)
+(INSERT INTO company (company_name, company_cnpj, company_activity, company_observation) 
+VALUES ('Auto Elétrica do Pedrão', 67453453000154, 'Posto de Abastecimento', 'Não sei') RETURNING pk_company)
 INSERT INTO address_on (address_public_place, address_number, address_district, address_cep, fk_address_company)
 SELECT 'Rua Oito', 209, 'Jardim Manaus', 19912789, company_key.pk_company
 FROM company_key;
