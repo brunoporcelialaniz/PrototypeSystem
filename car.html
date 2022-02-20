@@ -224,22 +224,22 @@
                                 <div class="row">
                                     <div class="form-group col-lg-3 col-md-3">
                                         <label>Modelo</label>
-                                        <input type="text" class="form-control" id="" placeholder="Ex. Gol">
+                                        <input type="text" class="form-control" name="vehicle_model" placeholder="Ex. Gol">
                                     </div>
 
                                     <div class="form-group col-lg-3 col-md-3">
                                         <label>Marca</label>
-                                        <input type="text" class="form-control" id="" placeholder="Ex. Fiat">
+                                        <input type="text" class="form-control" name="vehicle_brand" placeholder="Ex. Fiat">
                                     </div>
 
                                     <div class="form-group col-lg-3 col-md-3">
                                         <label>Cor</label>
-                                        <input type="text" class="form-control" id="" placeholder="Ex. Branco">
+                                        <input type="text" class="form-control" name="vehicle_color" placeholder="Ex. Branco">
                                     </div>
 
                                     <div class="form-group col-lg-3 col-md-3">
                                         <label>Quilômetro rodado</label>
-                                        <input type="number" class="form-control" id="" placeholder="Ex. 77342 ou 0">
+                                        <input type="number" class="form-control" name="vehicle_kilometer" placeholder="Ex. 77342 ou 0">
                                     </div>
                                 </div>
 
@@ -248,7 +248,7 @@
                                 <div class="row">
                                     <div class="form-group col-lg-3 col-md-3">
                                         <label>Combustível</label>
-                                        <select class="custom-select" id="">
+                                        <select class="custom-select" name="vehicle_fuel">
                                             <option></option>
                                             <option value="1">Gasolina</option>
                                             <option value="2">Etanol</option>
@@ -261,17 +261,17 @@
 
                                     <div class="form-group col-lg-3 col-md-3">
                                         <label>Ano do modelo</label>
-                                        <input class="form-control" type="number" id="" placeholder="Ex. 2011">
+                                        <input class="form-control" type="number" name="vehicle_model_year" placeholder="Ex. 2011">
                                     </div>
 
                                     <div class="form-group col-lg-3 col-md-3">
                                         <label>Ano da fabricação</label>
-                                        <input class="form-control" type="number" id="" placeholder="Ex. 2011">
+                                        <input class="form-control" type="number" name="vehicle_year_manufacture" placeholder="Ex. 2011">
                                     </div>
 
                                     <div class="form-group col-lg-3 col-md-3">
                                         <label>Placa</label>
-                                        <input class="form-control" type="text" id="" placeholder="Ex. 28U8YG">
+                                        <input class="form-control" type="text" name="vehicle_license_plate" placeholder="Ex. 28U8YG">
                                     </div>
                                 </div>
 
@@ -286,7 +286,7 @@
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <label>Portas & Passageiros</label>
-                                                                <select class="form-select mx-auto col-lg-12 col-md-12" name="activity" multiple aria-label="multiple select example">
+                                                                <select class="form-select mx-auto col-lg-12 col-md-12" name="vehicle_doors" multiple aria-label="multiple select example">
                                                                     <option value="2 Portas 2 Passageiros">2 Portas - 2 Passageiros</option>
                                                                     <option value="2 Portas 4 Passageiros">2 Portas - 4 Passageiros</option>
                                                                     <option value="2 Portas 5 Passageiros">2 Portas - 5 Passageiros</option>
@@ -302,7 +302,7 @@
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <label>Transmissão</label>
-                                                                <select class="form-select mx-auto col-lg-12 col-md-12" name="activity" multiple aria-label="multiple select example">
+                                                                <select class="form-select mx-auto col-lg-12 col-md-12" name="vehicle_streaming" multiple aria-label="multiple select example">
                                                                     <option value="Manual">Manual</option>
                                                                     <option value="Automática">Automática</option>
                                                                     <option value="Semiautomático">Semiautomático</option>
@@ -316,7 +316,7 @@
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <label>Modelos de lampadas</label>
-                                                                <select class="form-select mx-auto col-lg-12 col-md-12" name="activity" multiple aria-label="multiple select example">
+                                                                <select class="form-select mx-auto col-lg-12 col-md-12" name="vehicle_lamps" multiple aria-label="multiple select example">
                                                                     <option value="H1">H1</option>
                                                                     <option value="H3">H3</option>
                                                                     <option value="H4">H4</option>
@@ -345,7 +345,7 @@
                                                 <label>Pneu</label>
                                                 <hr class="sidebar-divider d-none d-md-block">
                                                 <div class="row">
-                                                    <select class="form-select mx-auto col-lg-4 col-md-4" name="activity" multiple aria-label="multiple select example">
+                                                    <select class="form-select mx-auto col-lg-4 col-md-4" name="vehicle_tire_rim" multiple aria-label="multiple select example">
                                                         <option value="Aro 13">Aro 13</option>
                                                         <option value="Aro 14">Aro 14</option>
                                                         <option value="Aro 15">Aro 15</option>
@@ -358,7 +358,7 @@
                                                         <option value="Outros">Outros</option>
                                                     </select>
                                             
-                                                    <select class="form-select mx-auto col-lg-7 col-md-7" name="activity" multiple aria-label="multiple select example">
+                                                    <select class="form-select mx-auto col-lg-7 col-md-7" name="vehicle_tire_brand" multiple aria-label="multiple select example">
                                                         <option value="Michelin">Michelin</option>
                                                         <option value="Pirelli">Pirelli</option>
                                                         <option value="Goodyear">Goodyear</option>
@@ -387,21 +387,21 @@
                                             <div class="row">
                                                 <div class="form-group col-lg-9 col-md-9">
                                                     <label>Logradouro</label>
-                                                    <input type="text" class="form-control" id="" placeholder="Ex. Rua">
+                                                    <input type="text" class="form-control" name="public_place_car" placeholder="Ex. Rua">
                                                 </div>
                                                 <div class="form-group col-lg-3 col-md-3">
                                                     <label>Número</label>
-                                                    <input class="form-control" type="number" id="">
+                                                    <input class="form-control" type="number" name="number_car">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-groupcol-lg-8 col-md-8">
                                                     <label>Bairro</label>
-                                                    <input class="form-control" type="text" id="" placeholder="Ex. Jardim Das Flores">
+                                                    <input class="form-control" type="text" name="district_car" placeholder="Ex. Jardim Das Flores">
                                                 </div>
                                                 <div class="form-group col-lg-4 col-md-4">
                                                     <label>CEP</label>
-                                                    <input class="form-control" type="number" id="">
+                                                    <input class="form-control" type="number" name="cep_car">
                                                 </div>
                                             </div>
                                         </div>
@@ -411,7 +411,7 @@
 
                                     <div class="form-group">
                                         <label>Observação</label>
-                                        <textarea class="form-control" aria-label="With textarea" rows="1"></textarea>
+                                        <textarea class="form-control" name="vehicle_observation" aria-label="With textarea" rows="1"></textarea>
                                     </div>
                         </div>
                     </div>
@@ -578,6 +578,13 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <!-- Tabledit -->
+    <script src="vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <script src="vendor/jquery-tabledit/jquery.tabledit.min.js"></script>
+
+    <!-- Ajax -->
+    <script src="vendor/jquery-ajax/car_ajax.js"></script>
 
 </body>
 
