@@ -13,14 +13,15 @@ $(document).ready(function(){
                 admission_date: $('input[name=admission_date]').val(),
                 cnh_number: $('input[name=cnh_number]').val(),
                 cnh_date: $('input[name=cnh_date]').val(),
-                employee_observation: $('input[name=employee_observation]').val(),
+                employee_observation: $('textarea[name=employee_observation]').val(),
                 public_place: $('input[name=public_place]').val(),
                 number: $('input[name=number]').val(),
                 district: $('input[name=district]').val(),
                 cep: $('input[name=cep]').val()
             },
             success: function(msg) {
-                alert('success');
+                alert('Salvo com sucesso!!!');
+                window.location.reload();
             }               
         });
     });

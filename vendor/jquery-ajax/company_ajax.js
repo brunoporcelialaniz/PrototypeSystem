@@ -7,14 +7,15 @@ $(document).ready(function(){
                 name: $('input[name=name]').val(),
                 cnpj: $('input[name=cnpj]').val(),
                 activity: $('select[name=activity] option:selected').val(),
-                observation: $('input[name=observation]').val(),
+                observation: $('textarea[name=observation]').val(),
                 public_place: $('input[name=public_place]').val(),
                 number: $('input[name=number]').val(),
                 district: $('input[name=district]').val(),
                 cep: $('input[name=cep]').val()
             },
             success: function(msg) {
-                alert('success');
+                alert('Salvo com sucesso!!!');
+                window.location.reload();
             }               
         });
     });
