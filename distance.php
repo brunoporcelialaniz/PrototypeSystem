@@ -370,84 +370,29 @@
                                             <th>Editar/Excluir</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Pedro da Silva</th>
-                                            <th>Vendedor</th>
-                                            <th>234.98</th>
-                                            <th>1234587768</th>
-                                            <th>HT5R77</th>
-                                            <th>139</th>
-                                            <th>9</th>
-                                            <th></th>
-                                            <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto tabledit-delete-button btn btn-sm btn-default"></i></th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiago Nixon</td>
-                                            <td>Montador</td>
-                                            <td>78.90</td>
-                                            <td>6167432987</td>
-                                            <td>2Y56RE</td>
-                                            <td>800</td>
-                                            <td>19</td>
-                                            <td></td>
-                                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
-                                                <div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button></div>
-                                                <button type="button" class="tabledit-save-button btn btn-sm btn-success" style="float: none; display: none;">Save</button>
-                                                <button type="button" class="tabledit-confirm-button btn btn-sm btn-danger" style="display: none; float: none;">Confirm</button>
-                                                <button type="button" class="tabledit-restore-button btn btn-sm btn-warning" style="display: none; float: none;">Restore</button>
-                                            </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gabriel Winters</td>
-                                            <td>Cobrador</td>
-                                            <td>456.56</td>
-                                            <td>6398789564</td>
-                                            <td>O76TW9</td>
-                                            <td>750</td>
-                                            <td>8</td>
-                                            <td>Valor do combustível alto</td>
-                                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
-                                                <div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button></div>
-                                                <button type="button" class="tabledit-save-button btn btn-sm btn-success" style="float: none; display: none;">Save</button>
-                                                <button type="button" class="tabledit-confirm-button btn btn-sm btn-danger" style="display: none; float: none;">Confirm</button>
-                                                <button type="button" class="tabledit-restore-button btn btn-sm btn-warning" style="display: none; float: none;">Restore</button>
-                                            </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maria da Silva</td>
-                                            <td>Assistente</td>
-                                            <td>67.72</td>
-                                            <td>5978876741</td>
-                                            <td>12IYQO</td>
-                                            <td>500</td>
-                                            <td>7</td>
-                                            <td></td>
-                                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
-                                                <div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button></div>
-                                                <button type="button" class="tabledit-save-button btn btn-sm btn-success" style="float: none; display: none;">Save</button>
-                                                <button type="button" class="tabledit-confirm-button btn btn-sm btn-danger" style="display: none; float: none;">Confirm</button>
-                                                <button type="button" class="tabledit-restore-button btn btn-sm btn-warning" style="display: none; float: none;">Restore</button>
-                                            </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Heitor Chandler</td>
-                                            <td>Assistente</td>
-                                            <td>55.87</td>
-                                            <td>5987993421</td>
-                                            <td>08TYK0</td>
-                                            <td>137</td>
-                                            <td>13</td>
-                                            <td></td>
-                                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
-                                                <div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button></div>
-                                                <button type="button" class="tabledit-save-button btn btn-sm btn-success" style="float: none; display: none;">Save</button>
-                                                <button type="button" class="tabledit-confirm-button btn btn-sm btn-danger" style="display: none; float: none;">Confirm</button>
-                                                <button type="button" class="tabledit-restore-button btn btn-sm btn-warning" style="display: none; float: none;">Restore</button>
-                                            </div></td>
-                                        </tr>
+                                        <?php    
+                                            include "conexao.php";
+
+                                            $query = "SELECT pk_distance, distance_value, distance_number, distance_input, distance_exit, distance_date_input, distance_date_exit, distance_observation FROM public.distance;";
+                                                
+                                            $result = pg_query($dbconn, $query);
+
+                                            while($row = pg_fetch_assoc($result)) { 
+                                                echo  "<tr>
+                                                        <td>".$row['distance_value']."</td>
+                                                        <td>".$row['distance_number']."</td>
+                                                        <td>".$row['distance_input']."</td>
+                                                        <td>".$row['distance_exit']."</td>
+                                                        <td>".$row['distance_date_input']."</td>
+                                                        <td>".$row['distance_date_exit']."</td>
+                                                        <td>".$row['distance_observation']."</td>
+                                                        <td>
+                                                            
+                                                        </td>
+                                                    </tr>";    
+                                            }            
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
