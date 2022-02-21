@@ -220,4 +220,12 @@ SELECT * FROM public.distance AS D
 INNER JOIN public.employee AS E ON E.pk_employee = D.fk_distance_employee
 INNER JOIN public.vehicle AS V ON V.pk_vehicle = D.fk_distance_vehicle
 INNER JOIN public.company AS C ON C.pk_company = D.fk_distance_company;
-	
+
+######################
+
+SELECT pk_maintenance, maintenance_mechanil, maintenance_date_input, maintenance_date_exit, fk_maintenance_employee, fk_maintenance_vehicle, fk_maintenance_company, maintenance_observation
+	FROM public.maintenance;
+
+INSERT INTO public.maintenance(
+	pk_maintenance, maintenance_mechanil, maintenance_date_input, maintenance_date_exit, fk_maintenance_employee, fk_maintenance_vehicle, fk_maintenance_company, maintenance_observation)
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?);

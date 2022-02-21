@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-car-side"></i>
                 </div>
@@ -46,25 +46,25 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-            
+
             <!-- Heading -->
             <div class="sidebar-heading">
                 Serviço
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="maintenance.html">
+                <a class="nav-link" href="maintenance.php">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Manutenção</span></a>
             </li>
-           
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -74,7 +74,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="distance.html">
+                <a class="nav-link" href="distance.php">
                     <i class="fas fa-fw fa-car-side"></i>
                     <span>Gastos Diários</span></a>
             </li>
@@ -88,19 +88,19 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="company.html">
+                <a class="nav-link" href="company.php">
                     <i class="fas fa-fw fa-building"></i>
                     <span>Empresa</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="employee.html">
+                <a class="nav-link" href="employee.php">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Funcionário</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="car.html">
+                <a class="nav-link" href="car.php">
                     <i class="fas fa-fw fa-car"></i>
                     <span>Veículo</span></a>
             </li>
@@ -215,91 +215,127 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Empresa</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Manutenção</h1>
                     
+                    
+                        
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Cadastro Empresa</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Serviço Manutenção</h6>
                                 </div>
                                 <div class="card-body">
-                                     
                                     <div class="row">
                                         <div class="form-group col-lg-6 col-md-6">
                                             <label>Nome</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Ex. Oficina do Mario" aria-label="placa" aria-describedby="basic-addon1">
+                                            <select class="custom-select" name="fk_maintenance_employee">
+                                                <option value=""></option>
+                                                <?php
+                                                
+                                                include "conexao.php";
+
+                                                $query = "SELECT pk_employee, employee_fist_name, employee_last_name FROM public.employee;";
+                                                
+                                                $result = pg_query($dbconn, $query);
+
+                                                while($row = pg_fetch_assoc($result)) {
+                                                    echo '<option value="'.$row['pk_employee'].'"> '.$row['employee_fist_name'].' '.$row['employee_last_name'].' </option>';
+                                                }            
+                                                ?>
+                                            </select>
                                         </div>
 
                                         <div class="form-group col-lg-6 col-md-6">
-                                            <label>CNPJ</label>
-                                            <input type="number" name="cnpj" class="form-control" placeholder="Ex. 65567456000143" aria-label="placa" aria-describedby="basic-addon1">
-                                        </div>
-                                    </div>
+                                            <label>Placa</label>
+                                            <select class="custom-select" name="fk_maintenance_vehicle">
+                                                <option value=""></option>
+                                                <?php
+                                                
+                                                include "conexao.php";
 
-                                    <hr class="sidebar-divider d-none d-md-block">
+                                                $query = "SELECT pk_vehicle, vehicle_license_plate FROM public.vehicle;";
+                                                
+                                                $result = pg_query($dbconn, $query);
 
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Atividade</h5>
-                                            <div class="row">
-                                                <select class="form-select col-lg-12 col-md-12" name="activity" multiple aria-label="multiple select example">
-                                                    <option value="Mecânico Especialista">Mecânico Especialista</option>
-                                                    <option value="Elétrica Especialista">Elétrica Especialista</option>
-                                                    <option value="Funilaria & Pintura Especialista">Funilaria & Pintura Especialista</option>
-                                                    <option value="Tapeçaria Especialista">Tapeçaria Especialista</option>
-                                                    <option value="Concessionária Pneu">Concessionária Pneu</option>
-                                                    <option value="Concessionária Veículo">Concessionária Veículo</option>
-                                                    <option value="Posto de Abastecimento">Posto de Abastecimento</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <hr class="sidebar-divider d-none d-md-block">
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Endereço</h5>
-                                            <div class="row">
-                                                <div class="form-group col-lg-9 col-md-9">
-                                                    <label>Logradouro</label>
-                                                    <input type="text" name="public_place" class="form-control" id="" placeholder="Ex. Rua">
-                                                </div>
-                                                <div class="form-group col-lg-3 col-md-3">
-                                                    <label>Número</label>
-                                                    <input class="form-control" name="number" type="number" id="">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-lg-8 col-md-8">
-                                                    <label>Bairro</label>
-                                                    <input class="form-control" name="district" type="text" id="" placeholder="Ex. Jardim Das Flores">
-                                                </div>
-                                                <div class="form-group col-lg-4 col-md-4">
-                                                    <label>CEP</label>
-                                                    <input class="form-control" name="cep" type="number" id="">
-                                                </div>
-                                            </div>
+                                                while($row = pg_fetch_assoc($result)) {
+                                                    echo '<option value="'.$row['pk_vehicle'].'"> '.$row['vehicle_license_plate'].' </option>';
+                                                }            
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <hr class="sidebar-divider d-none d-md-block">
                                     
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Motivo da Manutenção</h5>
+                                            <select class="form-select col-lg-12 col-md-12" name="maintenance_mechanil" multiple aria-label="multiple select example">
+                                                <option value="Mecânico">Mecânico</option>
+                                                <option value="Elétrica">Elétrica</option>
+                                                <option value="Funilaria & Pintura">Funilaria & Pintura</option>
+                                                <option value="Tapeçaria">Tapeçaria</option>
+                                                <option value="Pneu">Pneu</option>
+                                                <option value="Outros">Outros</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="sidebar-divider d-none d-md-block">
+                                    
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Empresa Prestadora de Serviço</h5>
+                                            <select class="form-select col-lg-12 col-md-12" name="fk_maintenance_company" multiple aria-label="multiple select example">
+                                                <?php
+                                                
+                                                include "conexao.php";
+
+                                                $query = "SELECT pk_company, company_name FROM public.company;";
+                                                
+                                                $result = pg_query($dbconn, $query);
+
+                                                while($row = pg_fetch_assoc($result)) {
+                                                    echo '<option value="'.$row['pk_company'].'"> '.$row['company_name'].' </option>';
+                                                }            
+                                                ?>
+                                            </select>
+                                        </div>   
+                                    </div>
+
+                                    <hr class="sidebar-divider d-none d-md-block">
+
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6"> 
+                                            <label>Entrada em Manutenção</label>                  
+                                            <input class="form-control" name="maintenance_date_input" type="date" value="2011-08-19" id="example-datetime-local-input">
+                                        </div>
+
+                                        <div class="form-group col-lg-6 col-md-6">
+                                            <label>Data Prevista para Saida</label>
+                                            <input class="form-control" name="maintenance_date_exit" type="date" value="2011-08-19" id="example-datetime-local-input">
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="sidebar-divider d-none d-md-block">
+
                                     <div class="form-group">
                                         <label>Observação</label>
-                                        <textarea class="form-control" name="observation" aria-label="With textarea" rows="2"></textarea>
+                                        <textarea class="form-control" name="maintenance_observation" aria-label="With textarea" rows="1"></textarea>
                                     </div>
                                     
                                 </div>
                             </div>
+                    
+                   
 
                     <div class="col-xl-3 col-md-6 mb-4">
                         <button type="button" class="btn btn-success submit">Enviar</button>
                     </div>
-                
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Tabela Empresa</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Tabela de Manutenção</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -307,126 +343,61 @@
                                     <thead>
                                         <tr>
                                             <th>Nome</th>
-                                            <th>CNPJ</th>
-                                            <th>Logradouro</th>
-                                            <th>CEP</th>
-                                            <th>Número</th>
-                                            <th>Bairro</th>
+                                            <th>Cargo</th>
+                                            <th>Motivo da Manutenção</th>
+                                            <th>Placa</th>
+                                            <th>Oficina</th>
+                                            <th>Entrada em Manutenção</th>
+                                            <th>Data Prevista para Saida</th>
                                             <th>Observação</th>
                                             <th>Editar/Excluir</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Oficina da Silva</th>
-                                            <th>23432234000132</th>
-                                            <th>Rua Da Silva</th>
-                                            <th>19913546</th>
-                                            <th>12</th>
-                                            <th>Jardim Das Árvores</th>
+                                            <th>Pedro da Silva</th>
+                                            <th>Vendedor</th>
+                                            <th>Pneu</th>
+                                            <th>1WE453</th>
+                                            <th>Loja Pirelli</th>
+                                            <th>2021/07/25</th>
+                                            <th>2021/08/25</th>
                                             <th></th>
                                             <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
+                                            <td>Tiago Nixon</td>
+                                            <td>Assistente</td>
+                                            <td>Mecânico</td>
+                                            <td>6U67TG</td>
                                             <td>Oficina do Mario</td>
-                                            <td>87632234000132</td>
-                                            <td>Avenida Primeiro de Maio</td>
-                                            <td>19915554</td>
-                                            <td>225</td>
-                                            <td>Vila Das Águas</td>
-                                            <th></th>
+                                            <td>2021/04/15</td>
+                                            <td>2021/06/05</td>
+                                            <td>Carro parou de funcionar</td>
                                             <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
                                         </tr>
                                         <tr>
-                                            <td>Oficina do José</td>
-                                            <td>67532234000132</td>
-                                            <td>Rua Sete</td>
-                                            <td>19915345</td>
-                                            <td>201</td>
-                                            <td>Jardim Das Flores</td>
-                                            <th></th>
+                                            <td>Gabriel Winters</td>
+                                            <td>Vendedor</td>
+                                            <td>Funilaria</td>
+                                            <td>Y3J87R</td>
+                                            <td>Oficina do Cunha</td>
+                                            <td>2021/02/02</td>
+                                            <td>2021/02/22</td>
+                                            <td>Colisão frontal (número do BO: 877654)</td>
                                             <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
                                         </tr>
                                         <tr>
-                                            <td>Loja Pirelli</td>
-                                            <td>45321432000123</td>
-                                            <td>Rua Nove</td>
-                                            <td>19934543</td>
-                                            <td>209</td>
-                                            <td>Jardim Village</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Loja Do Cunha</td>
-                                            <td>34543334000123</td>
-                                            <td>Rua Zero</td>
-                                            <td>19914326</td>
-                                            <td>107</td>
-                                            <td>Jardim Vila Velha</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Posto Bom Jesus</td>
-                                            <td>87432543000123</td>
-                                            <td>Rua Do Leão</td>
-                                            <td>19918878</td>
-                                            <td>425</td>
-                                            <td>Vila do Mar</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Posto da Lua</td>
-                                            <td>56432543000123</td>
-                                            <td>Rua Jó da Silva</td>
-                                            <td>19987432</td>
-                                            <td>725</td>
-                                            <td>Vila São Paulo</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Auto Elétrica Dois Irmãos</td>
-                                            <td>54234345000132</td>
-                                            <td>Rua Verde</td>
-                                            <td>199134432</td>
-                                            <td>209</td>
-                                            <td>Jardim Manaus</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Auto Elétrica do Pedrão</td>
-                                            <td>67453453000154</td>
-                                            <td>Rua Oito</td>
-                                            <td>19912789</td>
-                                            <td>897</td>
-                                            <td>Vila Paris</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Funilaria Dois Irmãos</td>
-                                            <td>45623324000143</td>
-                                            <td>Rua Nove</td>
-                                            <td>19923456</td>
-                                            <td>725</td>
-                                            <td>Jardim Das Flores</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Funilaria do Mario</td>
-                                            <td>78623324000143</td>
-                                            <td>Rua Da Bola</td>
-                                            <td>19987654</td>
-                                            <td>806</td>
-                                            <td>Jardim Nova</td>
-                                            <th></th>
+                                            <td>Maria da Silva</td>
+                                            <td>Assistente</td>
+                                            <td>Eletrico</td>
+                                            <td>J9T873</td>
+                                            <td>Auto Eletrica do João</td>
+                                            <td>2021/04/07</td>
+                                            <td>2021/04/23</td>
+                                            <td>O vidro não levanta</td>
                                             <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
                                         </tr>
                                     </tbody>
@@ -483,7 +454,6 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -505,8 +475,8 @@
     <script src="vendor/jquery-tabledit/jquery.tabledit.min.js"></script>
 
     <!-- Ajax -->
-    <script src="vendor/jquery-ajax/company_ajax.js"></script>
-   
+    <script src="vendor/jquery-ajax/maintenance_ajax.js"></script>
+
 </body>
 
 </html>

@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-car-side"></i>
                 </div>
@@ -46,7 +46,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -60,7 +60,7 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="maintenance.html">
+                <a class="nav-link" href="maintenance.php">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Manutenção</span></a>
             </li>
@@ -74,7 +74,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="distance.html">
+                <a class="nav-link" href="distance.php">
                     <i class="fas fa-fw fa-car-side"></i>
                     <span>Gastos Diários</span></a>
             </li>
@@ -88,19 +88,19 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="company.html">
+                <a class="nav-link" href="company.php">
                     <i class="fas fa-fw fa-building"></i>
                     <span>Empresa</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="employee.html">
+                <a class="nav-link" href="employee.php">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Funcionário</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="car.html">
+                <a class="nav-link" href="car.php">
                     <i class="fas fa-fw fa-car"></i>
                     <span>Veículo</span></a>
             </li>
@@ -215,109 +215,144 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Manutenção</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Gastos Diários</h1>
                     
                     
                         
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Serviço Manutenção</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Registro Gastos Diários</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="form-group col-lg-6 col-md-6">
                                             <label>Nome</label>
-                                            <select class="custom-select" id="">
-                                                <option placeholder="639877"></option>
-                                                <option value="1">Carlos da Silva</option>
-                                                <option value="2">Pedro Oliveira</option>
-                                                <option value="3">Maria da Cunha</option>
+                                            <select class="custom-select" name="fk_distance_employee">
+                                                <option value=""></option>
+                                                <?php
+                                                
+                                                include "conexao.php";
+
+                                                $query = "SELECT pk_employee, employee_fist_name, employee_last_name FROM public.employee;";
+                                                
+                                                $result = pg_query($dbconn, $query);
+
+                                                while($row = pg_fetch_assoc($result)) {
+                                                    echo '<option value="'.$row['pk_employee'].'"> '.$row['employee_fist_name'].' '.$row['employee_last_name'].' </option>';
+                                                }            
+                                                ?>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-lg-6 col-md-6">
                                             <label>Placa</label>
-                                            <select class="custom-select" id="">
-                                                <option placeholder=""></option>
-                                                <option value="1">D345F3</option>
-                                                <option value="2">R4W234</option>
-                                                <option value="3">MJ8Y99</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <hr class="sidebar-divider d-none d-md-block">
-                                    
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Motivo da Manutenção</h5>
-                                            <select class="form-select col-lg-12 col-md-12" name="activity" multiple aria-label="multiple select example">
-                                                <option value="Mecânico">Mecânico</option>
-                                                <option value="Elétrica">Elétrica</option>
-                                                <option value="Funilaria & Pintura">Funilaria & Pintura</option>
-                                                <option value="Tapeçaria">Tapeçaria</option>
-                                                <option value="Pneu">Pneu</option>
-                                                <option value="Outros">Outros</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <hr class="sidebar-divider d-none d-md-block">
-                                    
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Empresa Prestadora de Serviço</h5>
-                                            <select class="form-select col-lg-12 col-md-12" name="activity" multiple aria-label="multiple select example">
+                                            <select class="custom-select" name="fk_distance_vehicle">
+                                                <option value=""></option>
                                                 <?php
                                                 
                                                 include "conexao.php";
 
-                                                $query = "SELECT pk_company, company_name FROM public.company;";
+                                                $query = "SELECT pk_vehicle, vehicle_license_plate FROM public.vehicle;";
                                                 
                                                 $result = pg_query($dbconn, $query);
 
                                                 while($row = pg_fetch_assoc($result)) {
-                                                    echo '<option value="'.$row['pk_company'].'"> '.$row['company_name'].' </option>';
+                                                    echo '<option value="'.$row['pk_vehicle'].'"> '.$row['vehicle_license_plate'].' </option>';
                                                 }            
                                                 ?>
                                             </select>
-                                        </div>   
+                                        </div>
                                     </div>
 
                                     <hr class="sidebar-divider d-none d-md-block">
 
-                                    <div class="row">
-                                        <div class="form-group col-lg-6 col-md-6"> 
-                                            <label>Entrada em Manutenção</label>                  
-                                            <input class="form-control" type="date" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-                                        </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Abastecimento</h5>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Posto de Abastecimento</h5>
+                                                    <select class="custom-select" name="fk_distance_company">
+                                                        <option value=""></option>
+                                                        <?php
+                                                
+                                                        include "conexao.php";
+        
+                                                        $query = "SELECT pk_company, company_name FROM public.company WHERE company_activity = 'Posto de Abastecimento';";
+                                                        
+                                                        $result = pg_query($dbconn, $query);
+        
+                                                        while($row = pg_fetch_assoc($result)) {
+                                                            echo '<option value="'.$row['pk_company'].'"> '.$row['company_name'].' </option>';
+                                                        }            
+                                                        ?>
+                                                    </select>
+                                                </div>   
+                                            </div>
 
-                                        <div class="form-group col-lg-6 col-md-6">
-                                            <label>Data Prevista para Saida</label>
-                                            <input class="form-control" type="date" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                            <hr class="sidebar-divider d-none d-md-block">
+                                    
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6">
+                                                    <label>Valor da Cupom Físcal</label>
+                                                    <input type="number" name="distance_value" class="form-control" placeholder="Ex. 123.87" aria-label="" aria-describedby="">
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6">
+                                                    <label>Número do Cupom Físcal</label>
+                                                    <input type="number" name="distance_number" class="form-control" placeholder="Ex. 634227679977" aria-label="" aria-describedby="">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    
+
+                                    <hr class="sidebar-divider d-none d-md-block">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Atividades</h5>
+                                            <div class="row">
+                                                <div class="form-group col-lg-3 col-md-3"> 
+                                                    <label>Km Inicial</label>
+                                                    <input type="number" name="distance_input" class="form-control" placeholder="Ex. 639877" aria-label="Username" aria-describedby="basic-addon1">
+                                                </div>
+
+                                                <div class="form-group col-lg-3 col-md-3">
+                                                    <label>Km Final</label>
+                                                    <input type="number" name="distance_exit" class="form-control" placeholder="Ex. 639888" aria-label="Km Final" aria-describedby="basic-addon1">
+                                                </div>
+                                            
+                                                <div class="form-group col-lg-3 col-md-3"> 
+                                                    <label>Inicio</label>                  
+                                                    <input class="form-control" name="distance_date_input" type="date" value="2011-08-19" name="">
+                                                </div>
+
+                                                <div class="form-group col-lg-3 col-md-3">
+                                                    <label>Final</label>
+                                                    <input class="form-control" name="distance_date_exit" type="date" value="2011-08-19" name="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <hr class="sidebar-divider d-none d-md-block">
 
                                     <div class="form-group">
-                                        <label>Observação</label>
-                                        <textarea class="form-control" aria-label="With textarea" rows="1"></textarea>
+                                        <label>Objetivo</label>
+                                        <textarea class="form-control" name="distance_observation" aria-label="With textarea" rows="1"></textarea>
                                     </div>
                                     
                                 </div>
                             </div>
-                    
-                   
+                     
 
                     <div class="col-xl-3 col-md-6 mb-4">
-                        <button type="button" class="btn btn-success">Enviar</button>
+                        <button type="button" class="btn btn-success submit">Enviar</button>
                     </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Tabela de Manutenção</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Tabela de Distância</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -326,11 +361,11 @@
                                         <tr>
                                             <th>Nome</th>
                                             <th>Cargo</th>
-                                            <th>Motivo da Manutenção</th>
+                                            <th>Valor Nota</th>
+                                            <th>Número Nota</th>
                                             <th>Placa</th>
-                                            <th>Oficina</th>
-                                            <th>Entrada em Manutenção</th>
-                                            <th>Data Prevista para Saida</th>
+                                            <th>Km Percorrido</th>
+                                            <th>Horas de Atividades</th>
                                             <th>Observação</th>
                                             <th>Editar/Excluir</th>
                                         </tr>
@@ -339,48 +374,79 @@
                                         <tr>
                                             <th>Pedro da Silva</th>
                                             <th>Vendedor</th>
-                                            <th>Pneu</th>
-                                            <th>1WE453</th>
-                                            <th>Loja Pirelli</th>
-                                            <th>2021/07/25</th>
-                                            <th>2021/08/25</th>
+                                            <th>234.98</th>
+                                            <th>1234587768</th>
+                                            <th>HT5R77</th>
+                                            <th>139</th>
+                                            <th>9</th>
                                             <th></th>
-                                            <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></th>
+                                            <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto tabledit-delete-button btn btn-sm btn-default"></i></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             <td>Tiago Nixon</td>
-                                            <td>Assistente</td>
-                                            <td>Mecânico</td>
-                                            <td>6U67TG</td>
-                                            <td>Oficina do Mario</td>
-                                            <td>2021/04/15</td>
-                                            <td>2021/06/05</td>
-                                            <td>Carro parou de funcionar</td>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                            <td>Montador</td>
+                                            <td>78.90</td>
+                                            <td>6167432987</td>
+                                            <td>2Y56RE</td>
+                                            <td>800</td>
+                                            <td>19</td>
+                                            <td></td>
+                                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                <div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button></div>
+                                                <button type="button" class="tabledit-save-button btn btn-sm btn-success" style="float: none; display: none;">Save</button>
+                                                <button type="button" class="tabledit-confirm-button btn btn-sm btn-danger" style="display: none; float: none;">Confirm</button>
+                                                <button type="button" class="tabledit-restore-button btn btn-sm btn-warning" style="display: none; float: none;">Restore</button>
+                                            </div></td>
                                         </tr>
                                         <tr>
                                             <td>Gabriel Winters</td>
-                                            <td>Vendedor</td>
-                                            <td>Funilaria</td>
-                                            <td>Y3J87R</td>
-                                            <td>Oficina do Cunha</td>
-                                            <td>2021/02/02</td>
-                                            <td>2021/02/22</td>
-                                            <td>Colisão frontal (número do BO: 877654)</td>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                            <td>Cobrador</td>
+                                            <td>456.56</td>
+                                            <td>6398789564</td>
+                                            <td>O76TW9</td>
+                                            <td>750</td>
+                                            <td>8</td>
+                                            <td>Valor do combustível alto</td>
+                                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                <div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button></div>
+                                                <button type="button" class="tabledit-save-button btn btn-sm btn-success" style="float: none; display: none;">Save</button>
+                                                <button type="button" class="tabledit-confirm-button btn btn-sm btn-danger" style="display: none; float: none;">Confirm</button>
+                                                <button type="button" class="tabledit-restore-button btn btn-sm btn-warning" style="display: none; float: none;">Restore</button>
+                                            </div></td>
                                         </tr>
                                         <tr>
                                             <td>Maria da Silva</td>
                                             <td>Assistente</td>
-                                            <td>Eletrico</td>
-                                            <td>J9T873</td>
-                                            <td>Auto Eletrica do João</td>
-                                            <td>2021/04/07</td>
-                                            <td>2021/04/23</td>
-                                            <td>O vidro não levanta</td>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                            <td>67.72</td>
+                                            <td>5978876741</td>
+                                            <td>12IYQO</td>
+                                            <td>500</td>
+                                            <td>7</td>
+                                            <td></td>
+                                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                <div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button></div>
+                                                <button type="button" class="tabledit-save-button btn btn-sm btn-success" style="float: none; display: none;">Save</button>
+                                                <button type="button" class="tabledit-confirm-button btn btn-sm btn-danger" style="display: none; float: none;">Confirm</button>
+                                                <button type="button" class="tabledit-restore-button btn btn-sm btn-warning" style="display: none; float: none;">Restore</button>
+                                            </div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Heitor Chandler</td>
+                                            <td>Assistente</td>
+                                            <td>55.87</td>
+                                            <td>5987993421</td>
+                                            <td>08TYK0</td>
+                                            <td>137</td>
+                                            <td>13</td>
+                                            <td></td>
+                                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                <div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button></div>
+                                                <button type="button" class="tabledit-save-button btn btn-sm btn-success" style="float: none; display: none;">Save</button>
+                                                <button type="button" class="tabledit-confirm-button btn btn-sm btn-danger" style="display: none; float: none;">Confirm</button>
+                                                <button type="button" class="tabledit-restore-button btn btn-sm btn-warning" style="display: none; float: none;">Restore</button>
+                                            </div></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -451,6 +517,20 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <!-- Tabledit -->
+    <script src="vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <script src="vendor/jquery-tabledit/jquery.tabledit.min.js"></script>
+
+    <!-- Ajax -->
+    <script src="vendor/jquery-ajax/maintenance_ajax.js"></script>
+
+    <!-- Tabledit -->
+    <script src="vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <script src="vendor/jquery-tabledit/jquery.tabledit.min.js"></script>
+
+    <!-- Ajax -->
+    <script src="vendor/jquery-ajax/distance_ajax.js"></script>
 
 </body>
 
