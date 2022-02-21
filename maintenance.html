@@ -251,50 +251,14 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Motivo da Manutenção</h5>
-                                            <div class="row">
-                                                <div class="form-check col-auto">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        Mecânico
-                                                    </label>
-                                                </div>
-                                                <div class="form-check col-auto">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        Elétrica
-                                                    </label>
-                                                </div>
-                                                <div class="form-check col-auto">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        Funilaria & Pintura
-                                                    </label>
-                                                </div>
-                                                <div class="form-check col-auto">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        Tapeçaria
-                                                    </label>
-                                                </div>
-                                                <div class="form-check col-auto">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        Concessionária Pneu
-                                                    </label>
-                                                </div>
-                                                <div class="form-check col-auto">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        Concessionária Veículo
-                                                    </label>
-                                                </div>
-                                                <div class="form-check col-auto">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        Outros
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            <select class="form-select col-lg-12 col-md-12" name="activity" multiple aria-label="multiple select example">
+                                                <option value="Mecânico">Mecânico</option>
+                                                <option value="Elétrica">Elétrica</option>
+                                                <option value="Funilaria & Pintura">Funilaria & Pintura</option>
+                                                <option value="Tapeçaria">Tapeçaria</option>
+                                                <option value="Pneu">Pneu</option>
+                                                <option value="Outros">Outros</option>
+                                            </select>
                                         </div>
                                     </div>
                                     
@@ -303,11 +267,19 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Empresa Prestadora de Serviço</h5>
-                                            <select class="custom-select" id="">
-                                                <option placeholder=""></option>
-                                                <option value="1">Oficina Do Mario</option>
-                                                <option value="2">Loja Pirelli</option>
-                                                <option value="3">Funilaria Cunha</option>
+                                            <select class="form-select col-lg-12 col-md-12" name="activity" multiple aria-label="multiple select example">
+                                                <?php
+                                                
+                                                include "conexao.php";
+
+                                                $query = "SELECT pk_company, company_name FROM public.company;";
+                                                
+                                                $result = pg_query($dbconn, $query);
+
+                                                while($row = pg_fetch_assoc($result)) {
+                                                    echo '<option value="'.$row['pk_company'].'"> '.$row['company_name'].' </option>';
+                                                }            
+                                                ?>
                                             </select>
                                         </div>   
                                     </div>
@@ -317,12 +289,12 @@
                                     <div class="row">
                                         <div class="form-group col-lg-6 col-md-6"> 
                                             <label>Entrada em Manutenção</label>                  
-                                            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                            <input class="form-control" type="date" value="2011-08-19T13:45:00" id="example-datetime-local-input">
                                         </div>
 
                                         <div class="form-group col-lg-6 col-md-6">
                                             <label>Data Prevista para Saida</label>
-                                            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                            <input class="form-control" type="date" value="2011-08-19T13:45:00" id="example-datetime-local-input">
                                         </div>
                                     </div>
                                     

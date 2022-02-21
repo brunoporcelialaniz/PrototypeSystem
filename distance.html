@@ -228,20 +228,36 @@
                                         <div class="form-group col-lg-6 col-md-6">
                                             <label>Nome</label>
                                             <select class="custom-select" id="">
-                                                <option placeholder="639877"></option>
-                                                <option value="1">Carlos da Silva</option>
-                                                <option value="2">Pedro Oliveira</option>
-                                                <option value="3">Maria da Cunha</option>
+                                                <?php
+                                                
+                                                include "conexao.php";
+
+                                                $query = "SELECT pk_employee, employee_fist_name, employee_last_name FROM public.employee;";
+                                                
+                                                $result = pg_query($dbconn, $query);
+
+                                                while($row = pg_fetch_assoc($result)) {
+                                                    echo '<option value="'.$row['pk_employee'].'"> '.$row['employee_fist_name'].$row['employee_last_name'].' </option>';
+                                                }            
+                                                ?>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-lg-6 col-md-6">
                                             <label>Placa</label>
                                             <select class="custom-select" id="">
-                                                <option placeholder=""></option>
-                                                <option value="1">D345F3</option>
-                                                <option value="2">R4W234</option>
-                                                <option value="3">MJ8Y99</option>
+                                                <?php
+                                                
+                                                include "conexao.php";
+
+                                                $query = "SELECT pk_vehicle, vehicle_license_plate FROM public.vehicle;";
+                                                
+                                                $result = pg_query($dbconn, $query);
+
+                                                while($row = pg_fetch_assoc($result)) {
+                                                    echo '<option value="'.$row['pk_vehicle'].'"> '.$row['vehicle_license_plate'].' </option>';
+                                                }            
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -255,10 +271,18 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title">Posto de Abastecimento</h5>
                                                     <select class="custom-select" id="">
-                                                        <option placeholder=""></option>
-                                                        <option value="1">Posto do Mario</option>
-                                                        <option value="2">Posto Azul</option>
-                                                        <option value="3">Posto do Cunha</option>
+                                                        <?php
+                                                
+                                                        include "conexao.php";
+        
+                                                        $query = "SELECT pk_company, company_name FROM public.company WHERE company_activity = 'Posto de Abastecimento';";
+                                                        
+                                                        $result = pg_query($dbconn, $query);
+        
+                                                        while($row = pg_fetch_assoc($result)) {
+                                                            echo '<option value="'.$row['pk_company'].'"> '.$row['company_name'].' </option>';
+                                                        }            
+                                                        ?>
                                                     </select>
                                                 </div>   
                                             </div>

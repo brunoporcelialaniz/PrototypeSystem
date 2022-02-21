@@ -207,3 +207,17 @@ SELECT * FROM public.address_on AS A
 INNER JOIN public.vehicle AS V ON A.fk_address_vehicle = V.pk_vehicle;
 
 #####################
+
+WITH    
+venda AS (insert into venda(inicio) values (now()) returning id), 
+item as (insert into item(nome) values ('batata-frita') returning id), 
+participante as(insert into participante(nome) values ('Anselmo') returning id)
+
+insert into lances_vendas(venda_id, item_id, participante_id, valor) 
+select *, 100 from venda, item, participante;
+
+SELECT * FROM public.distance AS D 
+INNER JOIN public.employee AS E ON E.pk_employee = D.fk_distance_employee
+INNER JOIN public.vehicle AS V ON V.pk_vehicle = D.fk_distance_vehicle
+INNER JOIN public.company AS C ON C.pk_company = D.fk_distance_company;
+	
