@@ -342,64 +342,42 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Cargo</th>
-                                            <th>Motivo da Manutenção</th>
                                             <th>Placa</th>
                                             <th>Oficina</th>
+                                            <th>Motivo da Manutenção</th>
                                             <th>Entrada em Manutenção</th>
                                             <th>Data Prevista para Saida</th>
                                             <th>Observação</th>
                                             <th>Editar/Excluir</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Pedro da Silva</th>
-                                            <th>Vendedor</th>
-                                            <th>Pneu</th>
-                                            <th>1WE453</th>
-                                            <th>Loja Pirelli</th>
-                                            <th>2021/07/25</th>
-                                            <th>2021/08/25</th>
-                                            <th></th>
-                                            <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiago Nixon</td>
-                                            <td>Assistente</td>
-                                            <td>Mecânico</td>
-                                            <td>6U67TG</td>
-                                            <td>Oficina do Mario</td>
-                                            <td>2021/04/15</td>
-                                            <td>2021/06/05</td>
-                                            <td>Carro parou de funcionar</td>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gabriel Winters</td>
-                                            <td>Vendedor</td>
-                                            <td>Funilaria</td>
-                                            <td>Y3J87R</td>
-                                            <td>Oficina do Cunha</td>
-                                            <td>2021/02/02</td>
-                                            <td>2021/02/22</td>
-                                            <td>Colisão frontal (número do BO: 877654)</td>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maria da Silva</td>
-                                            <td>Assistente</td>
-                                            <td>Eletrico</td>
-                                            <td>J9T873</td>
-                                            <td>Auto Eletrica do João</td>
-                                            <td>2021/04/07</td>
-                                            <td>2021/04/23</td>
-                                            <td>O vidro não levanta</td>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
+                                        <?php    
+                                            include "conexao.php";
+
+                                            $query = "SELECT * FROM public.maintenance AS M 
+                                            INNER JOIN public.employee AS E ON E.pk_employee = M.fk_maintenance_employee
+                                            INNER JOIN public.vehicle AS V ON V.pk_vehicle = M.fk_maintenance_vehicle
+                                            INNER JOIN public.company AS C ON C.pk_company = M.fk_maintenance_company;";
+                                                    
+                                            $result = pg_query($dbconn, $query);
+
+                                            while($row = pg_fetch_assoc($result)) { 
+                                                echo  "<tr>
+                                                            <td id=".$row['pk_maintenance'].">".$row['pk_maintenance']."</td>
+                                                            <td id=".$row['pk_employee'].">".$row['employee_fist_name']." ".$row['employee_last_name']."</td>'
+                                                            <td id=".$row['pk_vehicle'].">".$row['vehicle_license_plate']."</td>
+                                                            <td id=".$row['pk_company'].">".$row['company_name']."</td>
+                                                            <td>".$row['maintenance_mechanil']."</td>
+                                                            <td>".$row['maintenance_date_input']."</td>
+                                                            <td>".$row['maintenance_date_exit']."</td>
+                                                            <td>".$row['maintenance_observation']."</td>
+                                                            <td></td>
+                                                        </tr>";    
+                                            }            
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

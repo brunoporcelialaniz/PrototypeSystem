@@ -306,129 +306,42 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Nome</th>
                                             <th>CNPJ</th>
+                                            <th>Atividade</th>
                                             <th>Logradouro</th>
-                                            <th>CEP</th>
                                             <th>Número</th>
                                             <th>Bairro</th>
+                                            <th>CEP</th>
                                             <th>Observação</th>
                                             <th>Editar/Excluir</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Oficina da Silva</th>
-                                            <th>23432234000132</th>
-                                            <th>Rua Da Silva</th>
-                                            <th>19913546</th>
-                                            <th>12</th>
-                                            <th>Jardim Das Árvores</th>
-                                            <th></th>
-                                            <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Oficina do Mario</td>
-                                            <td>87632234000132</td>
-                                            <td>Avenida Primeiro de Maio</td>
-                                            <td>19915554</td>
-                                            <td>225</td>
-                                            <td>Vila Das Águas</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Oficina do José</td>
-                                            <td>67532234000132</td>
-                                            <td>Rua Sete</td>
-                                            <td>19915345</td>
-                                            <td>201</td>
-                                            <td>Jardim Das Flores</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Loja Pirelli</td>
-                                            <td>45321432000123</td>
-                                            <td>Rua Nove</td>
-                                            <td>19934543</td>
-                                            <td>209</td>
-                                            <td>Jardim Village</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Loja Do Cunha</td>
-                                            <td>34543334000123</td>
-                                            <td>Rua Zero</td>
-                                            <td>19914326</td>
-                                            <td>107</td>
-                                            <td>Jardim Vila Velha</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Posto Bom Jesus</td>
-                                            <td>87432543000123</td>
-                                            <td>Rua Do Leão</td>
-                                            <td>19918878</td>
-                                            <td>425</td>
-                                            <td>Vila do Mar</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Posto da Lua</td>
-                                            <td>56432543000123</td>
-                                            <td>Rua Jó da Silva</td>
-                                            <td>19987432</td>
-                                            <td>725</td>
-                                            <td>Vila São Paulo</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Auto Elétrica Dois Irmãos</td>
-                                            <td>54234345000132</td>
-                                            <td>Rua Verde</td>
-                                            <td>199134432</td>
-                                            <td>209</td>
-                                            <td>Jardim Manaus</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Auto Elétrica do Pedrão</td>
-                                            <td>67453453000154</td>
-                                            <td>Rua Oito</td>
-                                            <td>19912789</td>
-                                            <td>897</td>
-                                            <td>Vila Paris</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Funilaria Dois Irmãos</td>
-                                            <td>45623324000143</td>
-                                            <td>Rua Nove</td>
-                                            <td>19923456</td>
-                                            <td>725</td>
-                                            <td>Jardim Das Flores</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Funilaria do Mario</td>
-                                            <td>78623324000143</td>
-                                            <td>Rua Da Bola</td>
-                                            <td>19987654</td>
-                                            <td>806</td>
-                                            <td>Jardim Nova</td>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
+                                        <?php    
+                                            include "conexao.php";
+
+                                            $query = "SELECT * FROM public.address_on AS A 
+                                            INNER JOIN public.company AS C ON A.fk_address_company = C.pk_company;";
+                                                    
+                                            $result = pg_query($dbconn, $query);
+
+                                            while($row = pg_fetch_assoc($result)) { 
+                                                echo  "<tr>
+                                                            <td id=".$row['pk_company'].">".$row['pk_company']."</td>
+                                                            <td>".$row['company_name']."</td>
+                                                            <td>".$row['company_cnpj']."</td>
+                                                            <td>".$row['company_activity']."</td>
+                                                            <td id=".$row['fk_address_company'].">".$row['address_public_place']." ".$row['employee_last_name']."</td>'
+                                                            <td>".$row['address_number']."</td>
+                                                            <td>".$row['address_district']."</td>
+                                                            <td>".$row['address_cep']."</td>  
+                                                            <td>".$row['company_observation']."</td>
+                                                            <td></td>
+                                                        </tr>";    
+                                            }            
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

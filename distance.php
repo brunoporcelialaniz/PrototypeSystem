@@ -359,13 +359,16 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Cargo</th>
+                                            <th>Placa</th>
+                                            <th>Posto de Abastecimento</th>
                                             <th>Valor Nota</th>
                                             <th>Número Nota</th>
-                                            <th>Placa</th>
-                                            <th>Km Percorrido</th>
-                                            <th>Horas de Atividades</th>
+                                            <th>Km Inicial</th>
+                                            <th>Km Final</th>
+                                            <th>Inicio das Atividades</th>
+                                            <th>Fim das Atividades</th>
                                             <th>Observação</th>
                                             <th>Editar/Excluir</th>
                                         </tr>
@@ -374,12 +377,19 @@
                                         <?php    
                                             include "conexao.php";
 
-                                            $query = "SELECT pk_distance, distance_value, distance_number, distance_input, distance_exit, distance_date_input, distance_date_exit, distance_observation FROM public.distance;";
+                                            $query = "SELECT * FROM public.distance AS D 
+                                            INNER JOIN public.employee AS E ON E.pk_employee = D.fk_distance_employee
+                                            INNER JOIN public.vehicle AS V ON V.pk_vehicle = D.fk_distance_vehicle
+                                            INNER JOIN public.company AS C ON C.pk_company = D.fk_distance_company;";
                                                 
                                             $result = pg_query($dbconn, $query);
 
                                             while($row = pg_fetch_assoc($result)) { 
                                                 echo  "<tr>
+                                                        <td id=".$row['pk_distance'].">".$row['pk_distance']."</td>
+                                                        <td id=".$row['pk_employee'].">".$row['employee_fist_name']." ".$row['employee_last_name']."</td>'
+                                                        <td id=".$row['pk_vehicle'].">".$row['vehicle_license_plate']."</td>
+                                                        <td id=".$row['pk_company'].">".$row['company_name']."</td>
                                                         <td>".$row['distance_value']."</td>
                                                         <td>".$row['distance_number']."</td>
                                                         <td>".$row['distance_input']."</td>
