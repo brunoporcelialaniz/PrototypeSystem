@@ -411,30 +411,71 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Serviços</h6>
                                 </div>
                                 <div class="card-body">
+                                    <?php    
+                                        include "conexao.php";
+
+                                        $query_mechanic = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.maintenance)) FROM public.maintenance AS M
+                                        INNER JOIN public.company AS C ON C.pk_company = M.fk_maintenance_company WHERE company_activity = 'Mecânico Especialista';";
+                                        $result_mechanic = pg_query($dbconn, $query_mechanic);
+                                        $row_mechanic = pg_fetch_row($result_mechanic); 
+                                                          
+                                    ?>
                                     <h4 class="small font-weight-bold">Serviço Mecanico <span
-                                            class="float-right">20%</span></h4>
+                                            class="float-right"><?php echo $row_mechanic[0];?>%</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $row_mechanic[0];?>%"
+                                            aria-valuenow="<?php echo $row_mechanic[0];?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
+                                    <?php    
+                                        include "conexao.php";
+
+                                        $query_percentage = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.vehicle)) FROM public.maintenance;";
+                                        $result_percentage = pg_query($dbconn, $query_percentage);
+                                        $row_percentage = pg_fetch_row($result_percentage); 
+                                                          
+                                    ?>
                                     <h4 class="small font-weight-bold">Serviço de Funilaria <span
                                             class="float-right">40%</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
+                                    <?php    
+                                        include "conexao.php";
+
+                                        $query_percentage = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.vehicle)) FROM public.maintenance;";
+                                        $result_percentage = pg_query($dbconn, $query_percentage);
+                                        $row_percentage = pg_fetch_row($result_percentage); 
+                                                          
+                                    ?>
                                     <h4 class="small font-weight-bold">Serviço Eletrico <span
                                             class="float-right">60%</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar" role="progressbar" style="width: 60%"
                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
+                                    <?php    
+                                        include "conexao.php";
+
+                                        $query_percentage = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.vehicle)) FROM public.maintenance;";
+                                        $result_percentage = pg_query($dbconn, $query_percentage);
+                                        $row_percentage = pg_fetch_row($result_percentage); 
+                                                          
+                                    ?>
                                     <h4 class="small font-weight-bold">Serviço de Pneu <span
                                             class="float-right">80%</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
+                                    <?php    
+                                        include "conexao.php";
+
+                                        $query_percentage = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.vehicle)) FROM public.maintenance;";
+                                        $result_percentage = pg_query($dbconn, $query_percentage);
+                                        $row_percentage = pg_fetch_row($result_percentage); 
+                                                          
+                                    ?>
                                     <h4 class="small font-weight-bold">Serviço Geral <span
                                             class="float-right">Complete!</span></h4>
                                     <div class="progress">
