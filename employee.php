@@ -346,69 +346,54 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Nome</th>
                                             <th>Sobrenome</th>
+                                            <th>Escolaridade</th>
                                             <th>CPF</th>
                                             <th>RG</th>
+                                            <th>Hora de Trabalho</th>
+                                            <th>Data de Admissão</th>
                                             <th>CNH Número</th>
-                                            <th>Carga Hora de Trabalho</th>
-                                            <th>Escolaridade</th>
-                                            <th>Endereço</th>
+                                            <th>Validade CNH</th>
+                                            <th>Logradouro</th>
+                                            <th>Número</th>
+                                            <th>Bairro</th>
+                                            <th>CEP</th>
                                             <th>Observação</th>
                                             <th>Editar/Excluir</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Pedro</th>
-                                            <th>da Silva</th>
-                                            <th>87634523432</th>
-                                            <th>23876987X</th>
-                                            <th>128765679845</th>
-                                            <th>160</th>
-                                            <th>Ensino Médio</th>
-                                            <th>Rua Das Flores</th>
-                                            <th></th>
-                                            <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiago</td>
-                                            <td>Nixon</td>
-                                            <td>34545623465</td>
-                                            <td>61876765X</td>
-                                            <td>2009878976</td>
-                                            <td>140</td>
-                                            <th>Ensino Superior</th>
-                                            <th>Avenida Ary Soares</th>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gabriel</td>
-                                            <td>Winters</td>
-                                            <td>23434545643</td>
-                                            <td>63654543X</td>
-                                            <td>2011072598</td>
-                                            <td>170</td>
-                                            <th>Pós-Graduação</th>
-                                            <th>Rua Sete</th>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Helena</td>
-                                            <td>Chandler</td>
-                                            <td>23423123465</td>
-                                            <td>59786564X</td>
-                                            <td>2012990806</td>
-                                            <td>137</td>
-                                            <th>Ensino Médio</th>
-                                            <th>Rua Primeiro de Maio</th>
-                                            <th></th>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
+                                        <?php    
+                                            include "conexao.php";
+
+                                            $query = "SELECT * FROM public.address_on AS A 
+                                            INNER JOIN public.employee AS E ON A.fk_address_employee = E.pk_employee;";
+                                                    
+                                            $result = pg_query($dbconn, $query);
+
+                                            while($row = pg_fetch_assoc($result)) { 
+                                                echo  "<tr>
+                                                            <td name=".$row['pk_employee'].">".$row['pk_employee']."</td>
+                                                            <td>".$row['employee_fist_name']."</td>
+                                                            <td>".$row['employee_last_name']."</td>
+                                                            <td>".$row['employee_education']."</td>
+                                                            <td>".$row['employee_cpf']."</td>
+                                                            <td>".$row['employee_rg']."</td>
+                                                            <td>".$row['employee_working_hours']."</td>
+                                                            <td>".$row['employee_admission_date']."</td>
+                                                            <td>".$row['employee_cnh_number']."</td>
+                                                            <td>".$row['employee_cnh_date']."</td>
+                                                            <td name=".$row['fk_address_employee'].">".$row['address_public_place']." ".$row['employee_last_name']."</td>'
+                                                            <td>".$row['address_number']."</td>
+                                                            <td>".$row['address_district']."</td>
+                                                            <td>".$row['address_cep']."</td>  
+                                                            <td>".$row['employee_observation']."</td>"; ?>
+                                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                                <?php echo "</tr>";    
+                                            } 
+                                        ?>   
                                     </tbody>
                                 </table>
                             </div>

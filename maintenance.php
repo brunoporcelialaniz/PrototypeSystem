@@ -342,7 +342,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th></th>
                                             <th>Nome</th>
                                             <th>Placa</th>
                                             <th>Oficina</th>
@@ -366,15 +366,17 @@
 
                                             while($row = pg_fetch_assoc($result)) { 
                                                 echo  "<tr>
-                                                            <td id=".$row['pk_maintenance'].">".$row['pk_maintenance']."</td>
-                                                            <td id=".$row['pk_employee'].">".$row['employee_fist_name']." ".$row['employee_last_name']."</td>'
-                                                            <td id=".$row['pk_vehicle'].">".$row['vehicle_license_plate']."</td>
-                                                            <td id=".$row['pk_company'].">".$row['company_name']."</td>
+                                                            <td name=".$row['pk_maintenance'].">".$row['pk_maintenance']."</td>
+                                                            <td name=".$row['pk_employee'].">".$row['employee_fist_name']." ".$row['employee_last_name']."</td>'
+                                                            <td name=".$row['pk_vehicle'].">".$row['vehicle_license_plate']."</td>
+                                                            <td name=".$row['pk_company'].">".$row['company_name']."</td>
                                                             <td>".$row['maintenance_mechanil']."</td>
                                                             <td>".$row['maintenance_date_input']."</td>
                                                             <td>".$row['maintenance_date_exit']."</td>
                                                             <td>".$row['maintenance_observation']."</td>
-                                                            <td></td>
+                                                            <td>"; ?>
+                                                                <i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i>
+                                                <?php echo    "</td>
                                                         </tr>";    
                                             }            
                                         ?>

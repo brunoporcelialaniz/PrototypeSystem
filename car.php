@@ -250,12 +250,12 @@
                                         <label>Combustível</label>
                                         <select class="custom-select" name="vehicle_fuel">
                                             <option></option>
-                                            <option value="1">Gasolina</option>
-                                            <option value="2">Etanol</option>
-                                            <option value="3">Gasolina/Etanol</option>
-                                            <option value="4">Óleo diesel</option>
-                                            <option value="5">Gás natural</option>
-                                            <option value="6">Veículo Elétrico</option>
+                                            <option value="Gasolina">Gasolina</option>
+                                            <option value="Etanol">Etanol</option>
+                                            <option value="Gasolina/Etanol">Gasolina/Etanol</option>
+                                            <option value="Óleo diesel">Óleo diesel</option>
+                                            <option value="Gás natural">Gás natural</option>
+                                            <option value="Veículo Elétrico">Veículo Elétrico</option>
                                         </select>
                                     </div>
 
@@ -430,85 +430,61 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Modelo</th>
                                             <th>Marca</th>
-                                            <th>Combustível</th>
-                                            <th>Ano do modelo</th>
-                                            <th>Ano da fabricação</th>
-                                            <th>Placa</th>
                                             <th>Cor</th>
-                                            <th>Quilômetro rodado</th>
+                                            <th>Quilômetro</th>
+                                            <th>Combustível</th>
+                                            <th>Transmissão</th>
                                             <th>Aro Pneu</th>
-                                            <th>Marca Pneu</th>
-                                            <th>Portas</th>
-                                            <th>Vidros</th>
-                                            <th>Modelos de lampadas</th>
-                                            <th>Categoria de transmissão</th>
-                                            <th>Endereço</th>
+                                            <th>Pneu</th>
+                                            <th>Lâmpada</th>
+                                            <th>Modelo</th>
+                                            <th>Fabricação</th>
+                                            <th>Placa</th>
+                                            <th>Portas & Passageiros</th>        
+                                            <th>Logradouro</th>
+                                            <th>Número</th>
+                                            <th>Bairro</th>
+                                            <th>CEP</th>
                                             <th>Observação</th>
                                             <th>Editar/Excluir</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Fiesta</th>
-                                            <th>Ford</th>
-                                            <th>Gasolina/Etanol</th>
-                                            <th>2019</th>
-                                            <th>2020</th>
-                                            <th>U76YT5</th>
-                                            <th>Branco</th>
-                                            <th>11234</th>
-                                            <th>14</th>
-                                            <th>Pirelli</th>
-                                            <th>4</th>
-                                            <th>Manual</th>
-                                            <th>H7</th>
-                                            <th>Manual</th>
-                                            <th>Rua José da Silva</th>
-                                            <th></th>
-                                            <th><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Kwid</td>
-                                            <td>Renault</td>
-                                            <td>Gasolina/Etanol</td>
-                                            <td>2020</td>
-                                            <td>2020</td>
-                                            <td>8TY54R</td>
-                                            <td>Branco</td>
-                                            <td>34543</td>
-                                            <td>13</td>
-                                            <td>Pirelli</td>
-                                            <td>4</td>
-                                            <td>Manual</td>
-                                            <td>H3</td>
-                                            <td>Manual</td>
-                                            <td>Rua Ary Correa</td>
-                                            <td></td>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Arco</td>
-                                            <td>Fiat</td>
-                                            <td>Gasolina/Etanol</td>
-                                            <td>2020</td>
-                                            <td>2021</td>
-                                            <td>U76TF3</td>
-                                            <td>Branco</td>
-                                            <td>66745</td>
-                                            <td>14</td>
-                                            <td>Pirelli</td>
-                                            <td>4</td>
-                                            <td>Manual</td>
-                                            <td>H1</td>
-                                            <td>Manual</td>
-                                            <td>Rua Sete</td>
-                                            <td></td>
-                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
-                                        </tr>
+                                        <?php    
+                                            include "conexao.php";
+
+                                            $query = "SELECT * FROM public.address_on AS A 
+                                            INNER JOIN public.vehicle AS V ON A.fk_address_vehicle = V.pk_vehicle;";
+                                                    
+                                            $result = pg_query($dbconn, $query);
+
+                                            while($row = pg_fetch_assoc($result)) { 
+                                                echo  "<tr>
+                                                            <td name=".$row['pk_vehicle'].">".$row['pk_vehicle']."</td>
+                                                            <td>".$row['vehicle_model']."</td>
+                                                            <td>".$row['vehicle_brand']."</td>
+                                                            <td>".$row['vehicle_color']."</td>
+                                                            <td>".$row['vehicle_kilometer']."</td>
+                                                            <td>".$row['vehicle_fuel']."</td>
+                                                            <td>".$row['vehicle_streaming']."</td>
+                                                            <td>".$row['vehicle_tire_rim']."</td>
+                                                            <td>".$row['vehicle_tire_brand']."</td>
+                                                            <td>".$row['vehicle_lamps']."</td>
+                                                            <td>".$row['vehicle_model_year']."</td>
+                                                            <td>".$row['vehicle_year_manufacture']."</td>
+                                                            <td>".$row['vehicle_license_plate']."</td>
+                                                            <td>".$row['vehicle_doors']."</td>
+                                                            <td name=".$row['fk_address_vehicle'].">".$row['address_public_place']." ".$row['employee_last_name']."</td>'
+                                                            <td>".$row['address_number']."</td>
+                                                            <td>".$row['address_district']."</td>
+                                                            <td>".$row['address_cep']."</td>  
+                                                            <td>".$row['vehicle_observation']."</td>"; ?>
+                                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                                <?php echo "</tr>";    
+                                            }            
+                                        ?> 
                                     </tbody>
                                 </table>
                             </div>

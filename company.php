@@ -306,7 +306,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th></th>
                                             <th>Nome</th>
                                             <th>CNPJ</th>
                                             <th>Atividade</th>
@@ -329,17 +329,17 @@
 
                                             while($row = pg_fetch_assoc($result)) { 
                                                 echo  "<tr>
-                                                            <td id=".$row['pk_company'].">".$row['pk_company']."</td>
+                                                            <td name=".$row['pk_company'].">".$row['pk_company']."</td>
                                                             <td>".$row['company_name']."</td>
                                                             <td>".$row['company_cnpj']."</td>
                                                             <td>".$row['company_activity']."</td>
-                                                            <td id=".$row['fk_address_company'].">".$row['address_public_place']." ".$row['employee_last_name']."</td>'
+                                                            <td name=".$row['fk_address_company'].">".$row['address_public_place']." ".$row['employee_last_name']."</td>'
                                                             <td>".$row['address_number']."</td>
                                                             <td>".$row['address_district']."</td>
                                                             <td>".$row['address_cep']."</td>  
-                                                            <td>".$row['company_observation']."</td>
-                                                            <td></td>
-                                                        </tr>";    
+                                                            <td>".$row['company_observation']."</td>"; ?>
+                                                            <td><i class="fas fa-fw fa-edit col-auto"></i><i class="fas fa-fw fa-trash col-auto"></i></td>
+                                                <?php echo "</tr>";    
                                             }            
                                         ?>
                                     </tbody>
