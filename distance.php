@@ -323,12 +323,12 @@
                                             
                                                 <div class="form-group col-lg-3 col-md-3"> 
                                                     <label>Inicio</label>                  
-                                                    <input class="form-control" name="distance_date_input" type="date" value="2011-08-19" name="">
+                                                    <input class="form-control" name="distance_date_input" type="date" value="2022-08-19">
                                                 </div>
 
                                                 <div class="form-group col-lg-3 col-md-3">
                                                     <label>Final</label>
-                                                    <input class="form-control" name="distance_date_exit" type="date" value="2011-08-19" name="">
+                                                    <input class="form-control" name="distance_date_exit" type="date" value="2022-08-19">
                                                 </div>
                                             </div>
                                         </div>

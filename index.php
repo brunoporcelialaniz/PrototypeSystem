@@ -224,9 +224,18 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
+                                            <?php    
+                                                include "conexao.php";
+
+                                                $month = date('m-Y');
+                                                $query_month = "SELECT sum(distance_value) FROM public.distance WHERE TO_CHAR(distance_date_input, 'MM-YYYY') = '$month' AND TO_CHAR(distance_date_exit, 'MM-YYYY') = '$month';";
+                                                $result_month = pg_query($dbconn, $query_month);
+                                                $row_month = pg_fetch_row($result_month); 
+                                                          
+                                            ?>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                 Gastos (Mensal)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$ 40.000,00</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$ <?php echo $row_month[0];?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -242,9 +251,18 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
+                                            <?php    
+                                                include "conexao.php";
+                                                
+                                                $year = date('Y');
+                                                $query_year = "SELECT sum(distance_value) FROM public.distance WHERE TO_CHAR(distance_date_input, 'YYYY') = '$year' AND TO_CHAR(distance_date_exit, 'YYYY') = '$year';";
+                                                $result_year = pg_query($dbconn, $query_year);
+                                                $row_year = pg_fetch_row($result_year); 
+                                                          
+                                            ?>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                 Gastos (Anual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$ 215.000,00</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$ <?php echo $row_year[0];?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
