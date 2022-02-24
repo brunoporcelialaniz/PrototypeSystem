@@ -304,7 +304,7 @@
                                                 <?php    
                                                     include "conexao.php";
 
-                                                    $query = "SELECT count(pk_vehicle)::int FROM public.vehicle;";
+                                                    $query = "SELECT count(*) FROM public.vehicle;";
                                                     $result = pg_query($dbconn, $query);
                                                     $row = pg_fetch_row($result); 
                                                     echo $row[0];
@@ -429,58 +429,92 @@
                                     <?php    
                                         include "conexao.php";
 
-                                        $query_percentage = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.vehicle)) FROM public.maintenance;";
-                                        $result_percentage = pg_query($dbconn, $query_percentage);
-                                        $row_percentage = pg_fetch_row($result_percentage); 
+                                        $query_painting = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.maintenance)) FROM public.maintenance AS M
+                                        INNER JOIN public.company AS C ON C.pk_company = M.fk_maintenance_company WHERE company_activity = 'Funilaria & Pintura Especialista';";
+                                        $result_painting = pg_query($dbconn, $query_painting);
+                                        $row_painting = pg_fetch_row($result_painting); 
                                                           
                                     ?>
                                     <h4 class="small font-weight-bold">Serviço de Funilaria <span
-                                            class="float-right">40%</span></h4>
+                                            class="float-right"><?php echo $row_painting[0];?>%</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $row_painting[0];?>%"
+                                            aria-valuenow="<?php echo $row_painting[0];?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <?php    
                                         include "conexao.php";
 
-                                        $query_percentage = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.vehicle)) FROM public.maintenance;";
-                                        $result_percentage = pg_query($dbconn, $query_percentage);
-                                        $row_percentage = pg_fetch_row($result_percentage); 
+                                        $query_electric = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.maintenance)) FROM public.maintenance AS M
+                                        INNER JOIN public.company AS C ON C.pk_company = M.fk_maintenance_company WHERE company_activity = 'Elétrica Especialista';";
+                                        $result_electric = pg_query($dbconn, $query_electric);
+                                        $row_electric = pg_fetch_row($result_electric); 
                                                           
                                     ?>
                                     <h4 class="small font-weight-bold">Serviço Eletrico <span
-                                            class="float-right">60%</span></h4>
+                                            class="float-right"><?php echo $row_electric[0];?>%</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar" role="progressbar" style="width: <?php echo $row_electric[0];?>%"
+                                            aria-valuenow="<?php echo $row_electric[0];?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <?php    
                                         include "conexao.php";
 
-                                        $query_percentage = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.vehicle)) FROM public.maintenance;";
-                                        $result_percentage = pg_query($dbconn, $query_percentage);
-                                        $row_percentage = pg_fetch_row($result_percentage); 
+                                        $query_pneu = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.maintenance)) FROM public.maintenance AS M
+                                        INNER JOIN public.company AS C ON C.pk_company = M.fk_maintenance_company WHERE company_activity = 'Concessionária Pneu';";
+                                        $result_pneu = pg_query($dbconn, $query_pneu);
+                                        $row_pneu = pg_fetch_row($result_pneu); 
                                                           
                                     ?>
                                     <h4 class="small font-weight-bold">Serviço de Pneu <span
-                                            class="float-right">80%</span></h4>
+                                            class="float-right"><?php echo $row_pneu[0];?>%</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $row_pneu[0];?>%"
+                                            aria-valuenow="<?php echo $row_pneu[0];?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <?php    
                                         include "conexao.php";
 
-                                        $query_percentage = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.vehicle)) FROM public.maintenance;";
-                                        $result_percentage = pg_query($dbconn, $query_percentage);
-                                        $row_percentage = pg_fetch_row($result_percentage); 
+                                        $query_supply = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.maintenance)) FROM public.maintenance AS M
+                                        INNER JOIN public.company AS C ON C.pk_company = M.fk_maintenance_company WHERE company_activity = 'Posto de Abastecimento';";
+                                        $result_supply = pg_query($dbconn, $query_supply);
+                                        $row_supply = pg_fetch_row($result_supply); 
+                                                          
+                                    ?>
+                                    <h4 class="small font-weight-bold">Serviço de Abastecimento <span
+                                            class="float-right"><?php echo $row_supply[0];?>%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $row_supply[0];?>%"
+                                            aria-valuenow="<?php echo $row_supply[0];?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <?php    
+                                        include "conexao.php";
+
+                                        $query_tapestry = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.maintenance)) FROM public.maintenance AS M
+                                        INNER JOIN public.company AS C ON C.pk_company = M.fk_maintenance_company WHERE company_activity = 'Tapeçaria Especialista';";
+                                        $result_tapestry = pg_query($dbconn, $query_tapestry);
+                                        $row_tapestry = pg_fetch_row($result_tapestry); 
+                                                          
+                                    ?>
+                                    <h4 class="small font-weight-bold">Serviço de Tapeçaria <span
+                                            class="float-right"><?php echo $row_tapestry[0];?>%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $row_tapestry[0];?>%"
+                                            aria-valuenow="<?php echo $row_tapestry[0];?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <?php    
+                                        include "conexao.php";
+
+                                        $query_car = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.maintenance)) FROM public.maintenance AS M
+                                        INNER JOIN public.company AS C ON C.pk_company = M.fk_maintenance_company WHERE company_activity = 'Concessionária Veículo';";
+                                        $result_car = pg_query($dbconn, $query_car);
+                                        $row_car = pg_fetch_row($result_car); 
                                                           
                                     ?>
                                     <h4 class="small font-weight-bold">Serviço Geral <span
-                                            class="float-right">Complete!</span></h4>
+                                            class="float-right"><?php echo $row_car[0];?>%</span></h4>
                                     <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $row_car[0];?>%"
+                                            aria-valuenow="<?php echo $row_car[0];?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>

@@ -290,12 +290,12 @@
                                                 
                                                 include "conexao.php";
 
-                                                $query = "SELECT pk_company, company_name FROM public.company;";
+                                                $query = "SELECT pk_company, company_name, company_activity FROM public.company;";
                                                 
                                                 $result = pg_query($dbconn, $query);
 
                                                 while($row = pg_fetch_assoc($result)) {
-                                                    echo '<option value="'.$row['pk_company'].'"> '.$row['company_name'].' </option>';
+                                                    echo '<option value="'.$row['pk_company'].'"> '.$row['company_name'].' - '.$row['company_activity'].' </option>';
                                                 }            
                                                 ?>
                                             </select>
@@ -369,7 +369,7 @@
                                                             <td name=".$row['pk_maintenance'].">".$row['pk_maintenance']."</td>
                                                             <td name=".$row['pk_employee'].">".$row['employee_fist_name']." ".$row['employee_last_name']."</td>'
                                                             <td name=".$row['pk_vehicle'].">".$row['vehicle_license_plate']."</td>
-                                                            <td name=".$row['pk_company'].">".$row['company_name']."</td>
+                                                            <td name=".$row['pk_company'].">".$row['company_name'].' - '.$row['company_activity']."</td>
                                                             <td>".$row['maintenance_mechanil']."</td>
                                                             <td>".$row['maintenance_date_input']."</td>
                                                             <td>".$row['maintenance_date_exit']."</td>
