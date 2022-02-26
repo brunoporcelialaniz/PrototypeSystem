@@ -484,7 +484,7 @@
                                                           
                                     ?>
                                     <h4 class="small font-weight-bold">Serviço de Pneu <span
-                                            class="float-right"><?php echo $row_pneu[0];?>%</span></h4>
+                                            class="float-right" id="row_pneu"><?php echo $row_pneu[0];?>%</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $row_pneu[0];?>%"
                                             aria-valuenow="<?php echo $row_pneu[0];?>" aria-valuemin="0" aria-valuemax="100"></div>
@@ -495,11 +495,10 @@
                                         $query_supply = "SELECT round((COUNT(*)*100) / (SELECT COUNT(*) FROM public.maintenance)) FROM public.maintenance AS M
                                         INNER JOIN public.company AS C ON C.pk_company = M.fk_maintenance_company WHERE company_activity = 'Posto de Abastecimento';";
                                         $result_supply = pg_query($dbconn, $query_supply);
-                                        $row_supply = pg_fetch_row($result_supply); 
-                                                          
+                                        $row_supply = pg_fetch_row($result_supply);                 
                                     ?>
                                     <h4 class="small font-weight-bold">Serviço de Abastecimento <span
-                                            class="float-right"><?php echo $row_supply[0];?>%</span></h4>
+                                            class="float-right" id="row_supply"><?php echo $row_supply[0];?>%</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $row_supply[0];?>%"
                                             aria-valuenow="<?php echo $row_supply[0];?>" aria-valuemin="0" aria-valuemax="100"></div>
@@ -529,7 +528,7 @@
                                                           
                                     ?>
                                     <h4 class="small font-weight-bold">Serviço Geral <span
-                                            class="float-right"><?php echo $row_car[0];?>%</span></h4>
+                                            class="float-right" id="row_car"><?php echo $row_car[0];?>%</span></h4>
                                     <div class="progress">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $row_car[0];?>%"
                                             aria-valuenow="<?php echo $row_car[0];?>" aria-valuemin="0" aria-valuemax="100"></div>

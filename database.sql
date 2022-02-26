@@ -190,7 +190,7 @@ INNER JOIN public.employee AS E ON A.fk_address_employee = E.pk_employee;
 
 INSERT INTO public.vehicle(
 	pk_vehicle, vehicle_model, vehicle_brand, vehicle_color, vehicle_kilometer, vehicle_fuel, vehicle_streaming, vehicle_tire_rim, vehicle_tire_brand, vehicle_lamps, vehicle_observation, vehicle_model_year, vehicle_year_manufacture, vehicle_license_plate, vehicle_doors)
-	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 
 INSERT INTO public.address_on(
 	pk_address, address_public_place, address_number, address_district, address_cep, fk_address_company, fk_address_employee, fk_address_vehicle)

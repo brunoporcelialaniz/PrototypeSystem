@@ -2,14 +2,17 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+var abas = document.querySelector('#row_supply').innerHTML.replace(/%/g, '');
+var pneu = document.querySelector('#row_pneu').innerHTML.replace(/%/g, '');
+var outr = document.querySelector('#row_car').innerHTML.replace(/%/g, '');
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Direct", "Referral", "Social"],
+    labels: ["Abastecimentos", "Pneus", "Outros"],
     datasets: [{
-      data: [55, 30, 15],
+      data: [abas, pneu, outr],
       backgroundColor: ['#3f2d2b', '#1cc88a', '#36b9cc'],
       hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
