@@ -584,6 +584,9 @@
             </div>
         </div>
     </div>
+    <?php
+        include "chart_area.php";
+    ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

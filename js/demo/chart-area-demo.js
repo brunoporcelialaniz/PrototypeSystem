@@ -27,12 +27,25 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
+var jan = document.getElementById("chart_jan").value;
+var fev = document.getElementById("chart_fev").value;
+var mar = document.getElementById("chart_mar").value;
+var abr = document.getElementById("chart_abr").value;
+var mai = document.getElementById("chart_mai").value;
+var jun = document.getElementById("chart_jun").value;
+var jul = document.getElementById("chart_jul").value;
+var ago = document.getElementById("chart_ago").value;
+var set = document.getElementById("chart_set").value;
+var out = document.getElementById("chart_out").value;
+var nov = document.getElementById("chart_nov").value;
+var dez = document.getElementById("chart_dez").value;
+
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
     datasets: [{
       label: "Earnings",
       lineTension: 0.3,
@@ -46,7 +59,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      data: [jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez],
     }],
   },
   options: {
