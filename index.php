@@ -212,8 +212,8 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <div class="input-group col-lg-6 col-md-6">
-                            <input type="date" class="form-control">
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" name="date_start">
+                            <input type="date" class="form-control" name="date_end">
                             <div class="input-group-append">
                                 <button type="button" class="btn btn-dark"><i class="fas fa-download fa-sm text-white-50"></i> Gerar Relatório</button>
                             </div>
@@ -609,6 +609,9 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+    <!-- Ajax -->
+    <script src="vendor/jquery-ajax/report_ajax.js"></script>
 
 </body>
 
