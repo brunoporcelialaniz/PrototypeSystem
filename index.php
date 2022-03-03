@@ -211,8 +211,13 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Gerar Relatório</a>
+                        <div class="input-group col-lg-6 col-md-6">
+                            <input type="date" class="form-control">
+                            <input type="date" class="form-control">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-dark"><i class="fas fa-download fa-sm text-white-50"></i> Gerar Relatório</button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Content Row -->
