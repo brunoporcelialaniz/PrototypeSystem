@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $(".submit").click(function(){
+    $(".send_report").click(function(){
         $.ajax({
             url: '/report.php',
             type: 'POST',

@@ -215,7 +215,7 @@
                             <input type="date" class="form-control" name="date_start">
                             <input type="date" class="form-control" name="date_end">
                             <div class="input-group-append">
-                                <button type="button" class="btn btn-dark"><i class="fas fa-download fa-sm text-white-50"></i> Gerar Relatório</button>
+                                <button type="button" class="btn btn-dark send_report"><i class="fas fa-download fa-sm text-white-50"></i> Gerar Relatório</button>
                             </div>
                         </div>
                     </div>
